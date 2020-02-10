@@ -21,15 +21,13 @@
 |address|string|null: false|番地||
 |building_name|string||マンション名やビル名・部屋号室等||
 |phone_number|string||お届け先電話番号|電話番号用のバリデーション要|
-|buyed_items|integer|null: false, foreign_key: "buyer_id", class_name: "Item"|Itemとの外部キー|実装難しそう|
-|sailing_items|integer|-> { where("buyer_id is NULL")}, foreign_key: "saler_id", class_name: "Item"|Itemとの外部キー|実装難しそう|
-|sold_items|integer|-> { where("buyer_id is not NULL")}, foreign_key: "saler_id", class_name: "Item"|Itemとの外部キー|実装難しそう|
+
 
 ### Association
 - has_many :cards, dependent: :destroy
-- has_many :buyed_items
-- has_many :sailing_items
-- has_many :sold_items
+- has_many :buyed_items, foreign_key: "buyer_id", class_name: "Item"
+- has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Item"
+- has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
 
 ## cardsテーブル
 |Column|Type|Options|Meaning|attention|
