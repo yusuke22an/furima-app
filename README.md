@@ -78,7 +78,6 @@
 |Column|Type|Options|Meaning|attention|
 |------|----|-------|-------|---------|
 |name|string||ブランド名|seedでブランド名を事前に流し込み、フォームで選択式にさせる。indexを貼る|
-|item_id|integer|null: false, foreign_key: true|Itemとの外部キー||
 
 ### Association
 - has_many :items
@@ -88,7 +87,6 @@
 |------|----|-------|-------|---------|
 |name|string||カテゴリー名|seedでカテゴリー名を事前に流し込み、フォームで選択式にさせる。indexを貼る|
 |ancestry|string||親子孫識別|ancestry gemを用いる|
-|item_id|integer|null: false, foreign_key: true|Itemとの外部キー||
 
 ### Association
 - has_many :items
