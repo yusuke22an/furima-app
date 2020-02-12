@@ -1,0 +1,363 @@
+.main {
+  &__image {
+    width: 100%;
+    height: 560px;
+    background-image: url('/bg-mainVisual-pict_pc.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    padding: 0 60px 0 60px;
+    display: flex;
+    align-items: center;
+    &__contents {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto 0 auto;
+      padding: 105px 0 0 0;
+      &__title {
+        font-size: 60px;
+        line-height: 1.2;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+        color: $TEXT-WT;
+      }
+      &__text {
+        font-size: 18px;
+        line-height: 1.77778;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+        color: $TEXT-WT;
+        margin: 16px 0 0 0;
+      }
+      &__icons {
+        display: flex;
+        margin: 24px 0 0 0;
+        &__appstore {
+          width: 180px;
+          height: 53px;
+          margin: 0 10px 0 0;
+          &__logo {
+            width: 100%;
+          }
+        }
+        &__googleplay {
+          width: 180px;
+          height: 53px;
+          &__logo {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  &__information {
+    padding: 60px 20px 60px 20px;
+    background-color: rgb(248, 248, 248);
+    &__title {
+      text-align: center;
+      font-size: 26px;
+      line-height: 1.4;
+      font-weight: bold;
+      padding: 0 0 11px;
+    }
+    &__bar {
+      margin: 0 auto 25px auto;
+      content: "";
+      width: 70px;
+      height: 4px;
+      background-color: rgb(60, 202, 206);
+    }
+    &__details {
+      text-align: center;
+      display: flex;
+      max-width: 1020px;
+      width: 100%;
+      margin: 0 auto 0 auto;
+      &__set {
+        width: 30%;
+        margin: 16px 5% 0 0;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &--last {
+          width: 30%;
+          margin: 16px 0 0 0;
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        &__picture {
+          margin: 0 0 20px 0;
+          position: relative;
+          &__img {
+            width: 100%;
+            vertical-align: bottom;
+          }
+          &__number {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 4%;
+            font-size: 30px;
+            text-align: center;
+            margin: 0 5px 0 0;
+            padding: 10px 20px 10px 20px;
+            background-color: $FRM-GRN;
+            color: $TEXT-WT;
+          }
+        }
+        &__title {
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 50px;
+          margin: 0 0 0 2px;
+          &--span {
+            color: $FRM-GRN;
+          }
+        }
+        &__reason {
+          font-size: 18px;
+          line-height: 1.5;
+          margin: 16px 0 0 0;
+        }
+      }
+    }
+  }
+  &__appeal {
+    background-image: url('/bg-topMiddleDl-pict.jpg');
+    background-position: bottom right;
+    height: 400px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    &__inner {
+      color: $TEXT-WT;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      text-align: left;
+      max-width: 1040px;
+      width: 100%;
+      margin: 0 auto 0 auto;
+      &__title {
+        font-size: 27px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      &__text {
+        font-size: 18px;
+        margin: 20px 0 30px 0;
+        line-height: 1.5;
+      }
+      &__icons {
+        display: flex;
+        &__appstore {
+          width: 180px;
+          height: 53px;
+          margin: 0 10px 0 0;
+          &__logo {
+            width: 100%;
+          }
+        }
+        &__googleplay {
+          width: 180px;
+          height: 53px;
+          &__logo {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  &__feature {
+    margin: 60px 100px 60px 100px;
+    &__title {
+      font-size: 27px;
+      text-align: center;
+      padding: 0 0 11px;
+      font-weight: bold;
+    }
+    &__bar {
+      margin: 0 auto 25px auto;
+      content: "";
+      width: 70px;
+      height: 4px;
+      background-color: $FRM-GRN;
+    }
+    &__details {
+      max-width: calc(1040px + 20px);
+      width: 100%;
+      margin: 0 auto 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      &__set {
+        display: flex;
+        flex-direction: column;
+        width: calc(1 / 3 * 100%);
+        text-align: center;
+        padding: 0 20px 0 20px;
+        &__picture {
+          width: 70%;
+          margin: 0 auto 0 auto;
+          line-height: 120px;
+          &__img {
+            width: 100%;
+            vertical-align: bottom;
+          }
+        }
+        &__title {
+          margin: 38px 0 10px 0;
+          font-size: 19px;
+          font-weight: bold;
+        }
+        &__text {
+          margin: 0 0 40px 0;
+          font-size: 17px;
+          font-weight: 200;
+          text-align: left;
+        }
+      }
+    }
+  }
+  &__pickup {
+    padding: 80px 0 80px 0;
+    background-color: rgb(248, 248, 248);
+    height: 100%;
+    &__title {
+      text-align: center;
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+    &__box {
+      &__name {
+        font-size: 24px;
+        text-align: center;
+        color: $FRM-GRN;
+        font-weight: bold;
+      }
+      &__items {
+        width: 780px;
+        margin: 26px auto 26px auto;
+        display: flex;
+        justify-content: space-around;
+        &__item {
+          width:220px;
+          &__picture {
+            background-color: $BACK-WHT;
+            width: 220px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            z-index: auto;
+            &__img {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              z-index: auto;
+              height: 150px;
+              object-fit: cover;
+              vertical-align: bottom;
+            }
+          }
+          &__list {
+            background-color: $BACK-WHT;
+            color: rgb(51, 51, 51);
+            padding: 16px;
+            &__name {
+              overflow: hidden;
+              line-height: 1.5;
+              font-size: 16px;
+              text-align: left;
+            }
+            &__details {
+              font-size: 16px;
+              &__ul {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                list-style: none;
+              }
+              &__p {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &__pickup2 {
+    padding: 0 0 80px 0;
+    background-color: rgb(248, 248, 248);
+    height: 100%;
+    &__title {
+      text-align: center;
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+    &__box {
+      &__name {
+        font-size: 24px;
+        text-align: center;
+        color: $FRM-GRN;
+        font-weight: bold;
+      }
+      &__items {
+        width: 780px;
+        margin: 26px auto 26px auto;
+        display: flex;
+        justify-content: space-around;
+        &__item {
+          width:220px;
+          &__picture {
+            background-color: $BACK-WHT;
+            width: 220px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            z-index: auto;
+            &__img {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              z-index: auto;
+              height: 150px;
+              object-fit: cover;
+              vertical-align: bottom;
+            }
+          }
+          &__list {
+            background-color: $BACK-WHT;
+            color: rgb(51, 51, 51);
+            padding: 16px;
+            &__name {
+              overflow: hidden;
+              line-height: 1.5;
+              font-size: 16px;
+              text-align: left;
+            }
+            &__details {
+              font-size: 16px;
+              &__ul {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                list-style: none;
+              }
+              &__p {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

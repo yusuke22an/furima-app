@@ -45,12 +45,12 @@
 |name|string|null: false|商品名||
 |text|text|null: false|商品説明||
 |status|string|null: false|商品の状態|フォームで選択式にする|
+|brand_name|string||ブランド名||
 |shipping_charges|string|null: false|配送料の負担|フォームで選択式にする|
 |shipping_area|string|null: false|発送元の地域|フォームで選択式にする|
 |days_to_ship|string|null: false|発送までの日数|フォームで選択式にする|
 |price|integer|null: false|価格|半角のみにバリデーション要|
 |photo_id|integer|null: false, foreign_key: true|Photoとの外部キー||
-|brand_id|integer|null: false, foreign_key: true|Brandとの外部キー||
 |category_id|integer|null: false, foreign_key: true|Categoryとの外部キー||
 |saler_id|integer|null: false, foreign_key: true, class_name: "User"|Userとの外部キー|実装難しそう|
 |buyer_id|integer|null: false, foreign_key: true, class_name: "User"|Userとの外部キー|実装難しそう|
@@ -58,7 +58,6 @@
 ### Association
 - has_many :photos, dependent: :destroy
 - belongs_to :category
-- belongs_to :brand
 - belongs_to :saler
 - belongs_to :buyer
 

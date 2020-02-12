@@ -1,0 +1,51 @@
+.registernow
+  .registernow__inner
+    .registernow__inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    .registernow__inner__text
+      今すぐ無料ダウンロード！
+    .registernow__inner__icons
+      .registernow__inner__icons__appstore
+        = image_tag '/appstore.svg', class: "registernow__inner__icons__appstore__logo"
+      .registernow__inner__icons__googleplay
+        = image_tag '/googleplay.svg', class: "registernow__inner__icons__googleplay__logo"
+.footer
+  %ul.footer__contents
+    %li.footer__contents__content
+      .footer__contents__content__title
+        FURIMAについて
+      %ul.footer__contents__content__ul
+        %li.footer__contents__content__ul__li
+          会社概要（運営会社）
+        %li.footer__contents__content__ul__li
+          プライバシーポリシー
+        %li.footer__contents__content__ul__li
+          FURIMA利用規約
+        %li.footer__contents__content__ul__li
+          ポイントに関する特約
+    %li.footer__contents__content
+      .footer__contents__content__title
+        FURIMAを見る
+      %ul.footer__contents__content__ul
+        %li.footer__contents__content__ul__li
+          カテゴリー一覧
+        %li.footer__contents__content__ul__li
+          ブランド一覧
+    %li.footer__contents__content
+      .footer__contents__content__title
+        ヘルプ＆ガイド
+      %ul.footer__contents__content__ul
+        %li.footer__contents__content__ul__li
+          FURIMAガイド
+        %li.footer__contents__content__ul__li
+          FURIMAロゴ利用ガイドライン
+        %li.footer__contents__content__ul__li
+          お知らせ
+  .footer__logo
+    = image_tag '/logo-white.png', class: "footer__logo__img"
+  %p.footer__company
+    ©︎ FURIMA
+= link_to "#", class: "btn" do
+  %span.btn__text
+    出品する
+  = image_tag '/icon_camera.png', class: "btn__icon"
