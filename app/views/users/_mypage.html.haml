@@ -1,46 +1,46 @@
--# .mypage
--#   .mypage__container
--#     .mypage__container__right
--#       .mypage__container__right__user
--#         = image_tag '/member_photo_noimage_thumb.png', class: "mypage__container__right__user__icon"
--#         .mypage__container__right__user__name
--#           S男
--#         .mypage__container__right__user__exhibitions
--#           出品数
--#           %span.mypage__container__right__user__exhibitions__number
--#             0
--#       .mypage__container__right__transaction
--#         .mypage__container__right__transaction__title
--#           購入した商品 -- 取引中
--#         .mypage__container__right__transaction__content
--#           .mypage__container__right__transaction__content__text
--#             取引中の商品がありません
--#       .mypage__container__right__transaction
--#         .mypage__container__right__transaction__title
--#           購入した商品 -- 過去の取引
--#         .mypage__container__right__transaction__content
--#           .mypage__container__right__transaction__content__text
--#             過去に取引した商品がありません
--#     .mypage__container__left
--#       .mypage__container__left__nav
--#         %ul.mypage__container__left__nav__list
--#           %li.mypage__container__left__nav__list__item.mypage__container__left__nav__list__item--active
--#             = link_to "#", class: "mypage__container__left__nav__list__item__a" do
--#               マイページ
--#             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
--#           %li.mypage__container__left__nav__list__item
--#             = link_to "#", class: "mypage__container__left__nav__list__item__a" do
--#               出品する
--#             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
--#           %li.mypage__container__left__nav__list__item
--#             = link_to "#", class: "mypage__container__left__nav__list__item__a" do
--#               支払い方法
--#             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
--#           %li.mypage__container__left__nav__list__item
--#             = link_to "#", class: "mypage__container__left__nav__list__item__a" do
--#               メール/パスワード
--#             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
--#           %li.mypage__container__left__nav__list__item
--#             = link_to "#", class: "mypage__container__left__nav__list__item__a" do
--#               ログアウト
--#             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
+.mypage
+  .mypage__container
+    .mypage__container__right
+      .mypage__container__right__user
+        = image_tag '/member_photo_noimage_thumb.png', class: "mypage__container__right__user__icon"
+        .mypage__container__right__user__name
+          S男
+        .mypage__container__right__user__exhibitions
+          出品数
+          %span.mypage__container__right__user__exhibitions__number
+            0
+      .mypage__container__right__transaction
+        .mypage__container__right__transaction__title
+          購入した商品 -- 取引中
+        .mypage__container__right__transaction__content
+          .mypage__container__right__transaction__content__text
+            取引中の商品がありません
+      .mypage__container__right__transaction
+        .mypage__container__right__transaction__title
+          購入した商品 -- 過去の取引
+        .mypage__container__right__transaction__content
+          .mypage__container__right__transaction__content__text
+            過去に取引した商品がありません
+    .mypage__container__left
+      .mypage__container__left__nav
+        %ul.mypage__container__left__nav__list
+          %li.mypage__container__left__nav__list__item.mypage__container__left__nav__list__item--active
+            = link_to "#", class: "mypage__container__left__nav__list__item__a" do
+              マイページ
+            = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
+          %li.mypage__container__left__nav__list__item
+            = link_to "#", class: "mypage__container__left__nav__list__item__a" do
+              出品する
+            = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
+          %li.mypage__container__left__nav__list__item
+            = link_to "#", class: "mypage__container__left__nav__list__item__a" do
+              支払い方法
+            = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
+          %li.mypage__container__left__nav__list__item
+            = link_to "#", class: "mypage__container__left__nav__list__item__a" do
+              メール/パスワード
+            = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
+          %li.mypage__container__left__nav__list__item
+            = link_to "#", class: "mypage__container__left__nav__list__item__a" do
+              ログアウト
+            = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
