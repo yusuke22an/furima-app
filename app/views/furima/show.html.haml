@@ -1,0 +1,49 @@
+= render "layouts/header"
+
+%nav.breadCrumbs
+  %ul
+    %li
+      = link_to 'FURIMA', "#", method: :get
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to 'ベビー・キッズ', "#", method: :get
+    %li
+      = icon 'fas', 'fas fa-chevron-right', class: 'ddd'
+      -# = icon("fas", "link") 
+    %li
+      = link_to 'ベビー服(男女兼用)  ~95cm', "#", method: :get
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to 'アウター', "#", method: :get
+    %li
+      %i.fa.fa-angle-right
+    %li
+      %p product3
+
+.main
+  .main__showMain
+    .main__showMain__contentLeftqq
+    .main__showMain__contentRight
+      .main__showMain__contentRight__topContent
+        .main__showMain__contentRight__topContent__itemBox
+          %h2.main__showMain__contentRight__topContent__itemBox__name product3
+          .main__showMain__contentRight__topContent__itemBox__body
+            %ul
+              %li
+                = image_tag '/a007.png', class: 'main__showMain__contentRight__topContent__itemBox__body'
+                %ul
+                  %li
+                    = image_tag '/a007.png', class: 'main__showMain__contentRight__topContent__itemBox__body'
+                %ul
+                  %li
+                    = image_tag '/a001.png', class: 'main__showMain__contentRight__topContent__itemBox__body'
+                %ul
+                  %li
+                    = image_tag '/a004.png', class: 'main__showMain__contentRight__topContent__itemBox__body'
+
+
+
+
+= render "layouts/footer"
