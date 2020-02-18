@@ -4,7 +4,7 @@
       .mypage__container__right__user
         = image_tag '/member_photo_noimage_thumb.png', class: "mypage__container__right__user__icon"
         .mypage__container__right__user__name
-          S男
+          = @user.nickname
         .mypage__container__right__user__exhibitions
           出品数
           %span.mypage__container__right__user__exhibitions__number
