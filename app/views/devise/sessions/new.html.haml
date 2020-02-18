@@ -1,18 +1,17 @@
 .sign_in-page
   .sign_in-page__header
-    .sign_in-page__header__banner
-      %a{:href => "https://www.mercari.com/jp/"}
-        = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
+    = link_to root_path, class: "sign_in-page__header__banner" do
+      = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
       -# バナーの反映方法調べる
   .sign_in-page__main
     .sign_in-page__main--inner
       .sign_in-page__main--inner__new-account
         %label アカウントをお持ちでない方はこちら
-        %a{:href => "https://www.mercari.com/jp/signup/?after_save_callback=%2Fjp%2F"} 
+        = link_to new_user_registration_path do
           %p.new-account 新規会員登録
 
       .sign_in-page__main--inner__content
-        = form_with model: @users, local: true do |f|
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
 
           .form-group
             .form-email
@@ -42,7 +41,7 @@
       %li
         %a{:href => "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
 
-    %a.footer-logo{:href => "https://www.mercari.com/jp/"}
+    = link_to root_path, class: "footer-logo" do
       = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
 
     %p.footer-inc

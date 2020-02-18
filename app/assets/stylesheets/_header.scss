@@ -51,9 +51,31 @@
         display: flex;
         &__login {
           padding: 0 0 0 16px;
+          &__link {
+            text-decoration: none;
+            color: rgb(51, 51, 51);
+          }
         }
         &__signup {
           padding: 0 0 0 16px;
+          &__link {
+            text-decoration: none;
+            color: rgb(51, 51, 51);
+          }
+        }
+        &__mypage {
+          padding: 0 0 0 16px;
+          &__link {
+            text-decoration: none;
+            color: rgb(51, 51, 51);
+          }
+        }
+        &__signout {
+          padding: 0 0 0 16px;
+          &__link {
+            text-decoration: none;
+            color: rgb(51, 51, 51);
+          }
         }
       }
     }
