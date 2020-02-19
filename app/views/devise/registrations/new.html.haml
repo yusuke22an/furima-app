@@ -1,11 +1,7 @@
 .account-page
   .account-page__header
-    .account-page__header__banner
-      %a{:href => "https://www.mercari.com/jp/"}
-        = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
-
-      -#   %img{:alt => "furima", :src => "app/assets/material/logo/logo.png"}/
-      -# バナーの反映方法調べる
+    = link_to root_path, class: "account-page__header__banner" do
+      = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
   .account-page__main
     .account-page__main--head
       会員情報入力
@@ -60,12 +56,12 @@
               = f.text_field :last_name, class: 'input-default-half', placeholder: "例）山男" 
 
           .form-group
-            %label お名前カナ(全角)
+            %label お名前かな(全角)
             %span.form-require 必須
             .form-first_name_furigana
-              = f.text_field :first_name_furigana, class: 'input-default-half', placeholder: "例）ヤマダ" 
+              = f.text_field :first_name_furigana, class: 'input-default-half', placeholder: "例）やまだ" 
             .form-last_name_furigana
-              = f.text_field :last_name_furigana, class: 'input-default-half', placeholder: "例）ヤマオ" 
+              = f.text_field :last_name_furigana, class: 'input-default-half', placeholder: "例）やまお" 
 
           .form-group
             %label(for="birthday")生年月日
@@ -74,22 +70,10 @@
               .select-wrap
                 %i.icon-arrow-bottom
                 = f.select :year_of_birth, [["2020", "2020"], ["2019", "2019"]]
-                -# %select{:name => "year"}>
-                -#   %option{:value => ""} -
-                -#   %option{:value => "2019"} 2019
-                -#   %option{:value => "2020"} 2020
                 年
                 = f.select :month_of_birth, [["1", "1"], ["2", "2"]]
-                -# %select{:name => "month"}>
-                -#   %option{:value => ""} -
-                -#   %option{:value => "1"} 1
-                -#   %option{:value => "2"} 2
                 月
                 = f.select :day_of_birth, [["1", "1"], ["2", "2"]]
-                -# %select{:name => "day"}>
-                -#   %option{:value => ""} -
-                -#   %option{:value => "1"} 1
-                -#   %option{:value => "2"} 2
                 日
           
           .form-group
@@ -170,42 +154,8 @@
       %li
         %a{:href => "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
 
-    %a.footer-logo{:href => "https://www.mercari.com/jp/"}
+    = link_to root_path, class: "footer-logo" do
       = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
 
     %p.footer-inc
       %small © TEAM-S, Inc.
-
-
--# #account-page.account-page
--#   .account-page__inner.clearfix
--#     .account-page__inner--left.account-page__header
--#       %h2 Create Account
--#       %h5 新規アカウントの作成
--#       = render "devise/shared/links"
--#     .account-page__inner--right.user-form
--#       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
--#         = devise_error_messages!
--#         .field
--#           .field-label
--#             = f.label :name
--#           .field-input
--#             = f.text_field :name, autofocus: true
--#         .field
--#           .field-label
--#             = f.label :email
--#           .field-input
--#             = f.email_field :email
--#         .field
--#           .field-label
--#             = f.label :password
--#             %i (英数字8文字以上)
--#           .field-input
--#             = f.password_field :password, autocomplete: "off"
--#         .field
--#           .field-label
--#             = f.label :password_confirmation
--#           .field-input
--#             = f.password_field :password_confirmation, autocomplete: "off"
--#         .actions
--#           = f.submit "Create Account", class: 'btn'

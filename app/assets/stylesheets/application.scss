@@ -1,5 +1,7 @@
 @import "./reset";
 @import "./color";
+@import "font-awesome-sprockets";
+@import "./font-awesome";
 
 @import "./header";
 @import "./footer";
@@ -15,3 +17,8 @@ bbb
 //   box-sizing: border-box;
 //   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
 // }
+
+#error_explanation {
+  height: 150px;
+  color: rgb(199, 42, 42);
+}

@@ -4,7 +4,7 @@
 |Column|Type|Options|Meaning|attention|
 |------|----|-------|-------|---------|
 |nickname|string|null: false|ニックネーム||
-|email|string|null: false, unique: true|メールアドレス||
+|email|string|null: false, unique: true|メールアドレス|@とドメインを含む|
 |password|string|null: false|パスワード|deviseで2度入力させる仕様にする|
 |last_name|string|null: false|名字|全角のみにバリデーション要|
 |last_name_furigana|string|null: false|みょうじ|全角のみにバリデーション要|
@@ -15,12 +15,12 @@
 |day_of_birth|integer|null: false, limit: 2|誕生日|フォームで選択式にする|
 |delivery_last_name|string|null: false|送付先名字||
 |delivery_first_name|string|null: false|送付先名前||
-|zip|string|null: false,limit: 8|郵便番号|郵便番号用のバリデーション要|
+|zip|string|null: false,limit: 8|郵便番号||
 |prefectures|string|null: false|都道府県|フォームで選択式にする|
 |municipality|string|null: false|市区町村||
 |address|string|null: false|番地||
 |building_name|string||マンション名やビル名・部屋号室等||
-|phone_number|string||お届け先電話番号|電話番号用のバリデーション要|
+|phone_number|string||お届け先電話番号||
 
 
 ### Association
