@@ -48,17 +48,17 @@
               font-weight: bold;
               color: #888;
               padding-bottom: 40px;
-              a.form-question{
+              .form-question{
                 display: inline-block;
                 width: 14px;
                 height: 14px;
                 border-radius: 50%;
+                text-decoration: none;
                 background-color: #0099e8;
                 color: #fff;
                 line-height: 14px;
                 font-size: 12px;
                 text-align: center;
-                text-decoration: none;
               }
             }
             .form-group{
@@ -277,7 +277,7 @@
         }
       }
     }
-    a.footer-logo{
+    .footer-logo{
       img{
         margin: 40px auto 0;
       }
