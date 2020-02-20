@@ -1,17 +1,48 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.sign_in-page
+  .sign_in-page__header
+    = link_to root_path, class: "sign_in-page__header__banner" do
+      = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
+      -# バナーの反映方法調べる
+  .sign_in-page__main
+    .sign_in-page__main--inner
+      .sign_in-page__main--inner__new-account
+        %label アカウントをお持ちでない方はこちら
+        = link_to new_user_registration_path do
+          %p.new-account 新規会員登録
+
+      .sign_in-page__main--inner__content
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+
+          .form-group
+            .form-email
+              = f.email_field :email, class: 'input-default', placeholder: "メールアドレス"
+              -# メールアドレスが入力されていない場合、注意喚起が必要
+
+          .form-group
+            .form-password
+              = f.text_field :password, class: 'input-default', placeholder: "パスワード"
+
+
+          .form-group
+          = f.submit 'ログイン', class: 'submit'
+
+          .form-group
+          %p.password-info
+            %a{:href => "/jp/help_center/article/423/", :target => "_blank"}
+              パスワードをお忘れの方
+              -# %i.icon-arrow-right
+
+  .sign_in-page__footer
+    %ul.caution
+      %li
+        %a{:href => "https://www.mercari.com/jp/privacy/"} プライバシーポリシー
+      %li
+        %a{:href => "https://www.mercari.com/jp/tos/"} フリマアプリ利用規約
+      %li
+        %a{:href => "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+
+    = link_to root_path, class: "footer-logo" do
+      = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
+
+    %p.footer-inc
+      %small © TEAM-S, Inc.

@@ -1,7 +1,7 @@
 .header
   .header__inner
     .header__inner__top
-      = link_to "#", class: "header__inner__top__logo" do
+      = link_to root_path, class: "header__inner__top__logo" do
         = image_tag '/logo.png'
       .header__inner__top__form
         キーワードから探す
@@ -15,6 +15,18 @@
           ブランド
       .header__inner__bottom__right
         .header__inner__bottom__right__login
-          ログイン
+          - unless user_signed_in?
+            = link_to new_user_session_path, class: "header__inner__bottom__right__login__link" do
+              ログイン
         .header__inner__bottom__right__signup
-          新規会員登録
+          - unless user_signed_in?
+            = link_to new_user_registration_path, class: "header__inner__bottom__right__signup__link" do
+              新規会員登録
+        .header__inner__bottom__right__mypage
+          - if user_signed_in?
+            = link_to user_path(current_user.id), class: "header__inner__bottom__right__mypage__link" do
+              マイページ
+        .header__inner__bottom__right__signout
+          - if user_signed_in?
+            = link_to destroy_user_session_path, method: :delete,  class: "header__inner__bottom__right__signout__link" do
+              サインアウト
