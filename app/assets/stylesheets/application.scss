@@ -11,12 +11,13 @@
 
 @import "./main";
 @import "./mypage";
-bbb
 
-// * {
-//   box-sizing: border-box;
-//   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
-// }
+@import "./sell_item";
+
+* {
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+}
 
 #error_explanation {
   height: 150px;

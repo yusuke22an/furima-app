@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: :show
-  resources :items, only: :index
+  resources :items, only: [:index, :new]
   resources :comments
   root 'items#index'
   resources :furima
