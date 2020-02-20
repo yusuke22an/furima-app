@@ -1,0 +1,163 @@
+.buy-page
+  .buy-page__header
+    .buy-page__header__banner
+      = link_to("https://www.mercari.com/jp/tokutei/") do
+        = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
+
+  .buy-page__main
+    .buy-page__main--head
+      商品の情報を入力
+    .buy-page__main--inner
+      .buy-page__main--inner__content
+        = form_with model: @items, local: true do |f|
+
+          .contents
+            .form-group
+              %label.pict(for="pict")出品画像
+              %span.form-require 必須
+              %p.pict-caution 最大10枚までアップロードできます
+
+              .buy-upload-pict
+
+          .contents
+            .form-group
+              %label(for="name")商品名
+              %span.form-require 必須
+              .form-name
+                = f.text_field :name, class: 'input-default', placeholder: "商品名（最大40文字まで）"
+
+            .form-group
+              %label(for="text")商品の説明
+              %span.form-require 必須
+              .form-text
+                = f.text_area :text, class: 'input-default-large', placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+
+          .contents
+            .contents-info 商品の詳細
+            .form-group
+              %label(for="category")カテゴリー
+              %span.form-require 必須
+              .category-select-wrap
+                .select-wrap
+                  %i.icon-arrow-bottom
+                  = f.select :category_id, [["","-"],["ニット","ニット"]]
+                .select-wrap
+                  %i.icon-arrow-bottom
+                  = f.select :category_id, [["","-"],["ハイゲージ","ハイゲージ"]]
+                .select-wrap
+                  %i.icon-arrow-bottom
+                  = f.select :category_id, [["","-"],["長袖","長袖"]]
+
+            .form-group
+              %label(for="brand_name")ブランド名
+              %span.form-any 任意
+              .form-text
+                = f.text_field :brand_name, class: 'input-default', placeholder: "例）メゾンマルタンマルジェラ"
+
+            .form-group
+              %label(for="status")商品の状態
+              %span.form-require 必須
+              .category-select-wrap
+                .select-wrap
+                  %i.icon-arrow-bottom
+                  = f.select :status, [["","-"],["新品・未使用","新品・未使用"]]
+
+          .contents 
+            .contents-info
+              .caution 配送について
+              .form-question
+                = link_to("?","/jp/help_center/article/68/")
+
+            .form-group
+              %label(for="shipping_charges")配送料の負担
+              %span.form-require 必須
+              .category-select-wrap
+                .select-wrap
+                  %i.icon-arrow-bottom
+                  = f.select :shipping_charges, [["","-"],["送料込み（出品者負担）","送料込み（出品者負担）"],["着払い（購入者負担）","着払い（購入者負担）"]]
+
+            .form-group
+              %label(for="shipping_area")発送元の地域
+              %span.form-require 必須
+              .category-select-wrap
+                .select-wrap
+                  %i.icon-arrow-bottom
+                  = f.select :shipping_area, [["","-"],["東京","東京"]]
+
+            .form-group
+              %label(for="days_to_ship")発送までの日数
+              %span.form-require 必須
+              .category-select-wrap
+                .select-wrap
+                  %i.icon-arrow-bottom
+                  = f.select :days_to_ship, [["","-"],["1-2日で発送","1-2日で発送"],["2-3日で発送","2-3日で発送"],["4-7日で発送","4-7日で発送"]]
+
+          .contents
+            .contents-info
+              .caution 販売価格（300〜9,999,999）
+              .form-question
+                = link_to("?","/jp/help_center/article/64/")
+
+
+            .form-group
+              .form-group__price
+                .form-group__price--left
+                  %label(for="price")価格
+                  %span.form-require 必須
+                .form-group__price--right
+                  ¥ 
+                  = f.number_field :price, class: 'input-default-price',name: 'price', placeholder: "例）300"
+
+              .form-group__border
+
+              .form-group__fee
+                .form-group__fee--left
+                  販売手数料（10%）
+                .form-group__fee--right
+                  %p #{10000 * 0.1}
+
+              .form-group__border
+
+              .form-group__profit
+                .form-group__profit--left
+                  販売利益
+                .form-group__profit--right
+                  ¥ 9,000
+
+          .contents
+            .form-group
+              .submit-caution
+                = link_to("禁止されている出品", "/jp/help_center/getting_started/prohibited_items/")
+                、
+                = link_to("行為", "/jp/help_center/getting_started/prohibited_conduct/")
+                を必ずご確認ください。
+                %br
+                またブランド品でシリアルナンバー等がある場合はご記載ください。
+                = link_to("偽ブランドの販売", "/jp/help_center/getting_started/counterfeit_goods/")
+                は犯罪であり処罰される可能性があります。
+                %br
+                また、出品をもちまして
+                = link_to("加盟店規約", "/jp/buyer_terms/")
+                に同意したことになります。
+
+              .btn__send
+                = f.submit '登録・送信', class: 'submit'
+                .btn__redirect もどる
+
+
+  .buy-page__footer
+    %ul.caution
+      %li
+        = link_to("プライバシーポリシー", "https://www.mercari.com/jp/privacy/")
+      %li
+        = link_to("フリマアプリ利用規約", "https://www.mercari.com/jp/tos/")
+      %li
+        = link_to("特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/")      
+      %br
+ 
+    .footer-logo
+      = link_to("https://www.mercari.com/jp/tokutei/") do
+        = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
+
+    %p.footer-inc
+      %small © TEAM-S, Inc.
