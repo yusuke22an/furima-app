@@ -34,7 +34,6 @@
       text-align: center;
     }
     &--inner{
-      // padding: 24px 16px 40px;
       border-top: 1px solid #f5f5f5;
       &__content{
         max-width: 700px;
@@ -62,7 +61,6 @@
                 text-decoration: none;
               }
             }
-          // タグ系は後半にまとめて記述
             .form-group{
               margin: 0;
               padding-bottom: 40px;
@@ -262,7 +260,6 @@
     }
   }
   &__footer{
-    // position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
