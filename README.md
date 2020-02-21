@@ -45,7 +45,7 @@
 |name|string|null: false|商品名||
 |text|text|null: false|商品説明||
 |status|string|null: false|商品の状態|フォームで選択式にする|
-|brand_name|string||ブランド名|indexを貼る|
+|brand_name|string||ブランド名||
 |shipping_charges|string|null: false|配送料の負担|フォームで選択式にする|
 |shipping_area|string|null: false|発送元の地域|フォームで選択式にする|
 |days_to_ship|string|null: false|発送までの日数|フォームで選択式にする|
@@ -71,6 +71,11 @@
 ### Association
 - belongs_to :item
 
+## brandsテーブル
+|Column|Type|Options|Meaning|attention|
+|------|----|-------|-------|---------|
+|name|string||ブランド名|seedでブランド名を事前に流し込み、フォームで選択式にさせる。indexを貼る|
+
 ### Association
 - has_many :items
 
@@ -78,10 +83,7 @@
 |Column|Type|Options|Meaning|attention|
 |------|----|-------|-------|---------|
 |name|string||カテゴリー名|seedでカテゴリー名を事前に流し込み、フォームで選択式にさせる。indexを貼る|
+|ancestry|string||親子孫識別|ancestry gemを用いる|
 
 ### Association
 - has_many :items
-
-## Other
-- ancestry,親子孫識別,ancestry gemを用いる
-

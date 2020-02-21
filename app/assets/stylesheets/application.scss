@@ -6,16 +6,21 @@
 @import "./header";
 @import "./footer";
 
-@import "./sessions_new";
-@import "./registrations_new";
-
 @import "./main";
 @import "./mypage";
+
+
+@import "./show";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "./sell_item";
+
+
 
 @import "./sell_item";
 
 * {
-  box-sizing: border-box;
+  box-sizng: border-b;
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
 }
 
