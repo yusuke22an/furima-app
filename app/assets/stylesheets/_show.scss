@@ -5,231 +5,164 @@
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   position: relative;
   padding: 0 60px;
-}
-
-.breadCrumbs ul {
-  padding: 17px 0 16px;
-  width: 100%;
-  max-width: 1040px;
-  font-size: 14px;
-  margin: 0 auto;
-}
-
-ul {
-  list-style: none;
-}
-
-ul {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-}
-
-.breadCrumbs ul:after {
-  display: block;
-  content: "";
-  clear: both;
-}
-
-.breadCrumbs ul li {
-  padding: 0 10px 0 0;
-  float: left;
+  ul {
+    padding: 17px 0 16px;
+    width: 100%;
+    max-width: 1040px;
+    font-size: 14px;
+    margin: 0 auto;
+    list-style: none;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+  ul:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+  ul li {
+    padding: 0 10px 0 0;
+    float: left;
+  }
 }
 
 .main {
   background: #f8f8f8;
-}
-
-div {
   display: block;
-}
-
-.showMain {
-  padding: 40px;
-  margin: 0 auto;
-}
-
-.showMain .contentRight {
-  width: 700px;
-  margin: 0 auto;
-}
-
-.showMain .contentRight .topContent .itemBox {
-  background-color: #fff;
-  padding: 24px 40px 40px;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__name {
-  text-align: center;
-  font-weight: bold;
-  font-size: 24px;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__body {
-  margin: 16px 0 0;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__body ul {
-  display: flex;
-  position: relative;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__body ul>li {
-  display: flex;
-  flex-direction: column;
-  width: 560px;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__body ul>li img {
-  object-fit: cover;
-  height: 346px;
+  &__showMain {
+    padding: 40px;
+    margin: 0 auto;
+  }
+  .contentRight {
+    width: 700px;
+    margin: 0 auto;
+    .topContent 
+      .itemBox {
+      background-color: #fff;
+      padding: 24px 40px 40px;
+      .itemBox__name {
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+      }
+      .itemBox__body {
+        margin: 16px 0 0;
+        ul {
+          display: flex;
+        }
+        ul>li {
+          display: flex;
+          flex-direction: column;
+          width: 560px;
+          align-items: center;
+          margin: 0 auto;
+        }
+        ul>li img {
+          object-fit: cover;
+          height: 346px;
+        }
+        ul>li ul {
+          display: flex;
+          justify-content: center;
+          margin-top: 10px;
+        }
+        ul>li ul li img {
+          object-fit: cover;
+          height: 87px;
+        }
+        ul>li ul li {
+          width: 25%;
+          margin: 0 10px 0 0;
+        }
+      }
+      .itemBox__price {
+        margin: 24px 0 24px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+      }
+      .itemBox__price>span {
+        font-size: 46px;
+        font-weight: bold;
+        margin: 0 10px 0 0;
+      }
+      .itemDetail {
+        line-height: 1.5;
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+      .table {
+        margin-bottom: 20px;
+        table {
+          width: 100%;
+          height: 375px;
+          border-collapse: collapse;
+          border: 1px solid #f8f8f8;
+          th {
+            width: 20%;
+            background-color: #eee;
+            font-weight: 400;
+            padding: 8px;
+            border: 1px solid #dedede;
+            font-size: 14px;
+            text-align: center;
+          }
+        }
+      }
+      .table table td {
+        width: 61%;
+        padding: 15px 15px;
+        border: 1px solid #dedede;
+        font-size: 14px;
+        a {
+          text-decoration: none;
+          color: #3CCACE;
+        }
+      }
+      .optionalArea ul.optional li.optionalBtn a {
+        padding: 6px 10px;
+        display: inline-block;
+        border-radius: 4px;
+        color: #333;
+        border: 1px solid #333;
+        text-decoration: none;
+      }
+    }
+    .commentBox {
+      padding: 24px;
+      background-color: #fff;
+      margin: 10px 0;
+      text-align: center;
+      .new_comment .commentBtn, .showMain .contentRight .topContent .commentBox .new_message .commentBtn {
+        font-size: 18px;
+        line-height: 48px;
+        background: #3CCACE;
+        border: 1px solid #3CCACE;
+        color: #fff;
+        width: 60%;
+        font-size: 18px;
+        border-radius: 100px;
+      }
+    }
+  }
+  .relatedItems a {
+    display: block;
+    margin: 24px 0 8px;
+    color: #3CCACE;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
+    position: relative;
+  }
 }
 
 img {
   width: 100%;
   vertical-align: bottom;
-}
-
-fieldset, img {
-  border: 0;
-}
-
-li {
-  text-align: -webkit-match-parent;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__body ul>li ul {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__body ul {
-  display: flex;
-  position: relative;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__body ul>li ul li {
-  width: 25%;
-  margin: 0 10px 0 0;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__body ul>li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__body ul>li ul li img {
-  object-fit: cover;
-  height: 87px;
-}
-
-img {
-  width: 100%;
-  vertical-align: bottom;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__body ul>li ul li {
-  width: 25%;
-  margin: 0 10px 0 0;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__price {
-  margin: 24px 0 24px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__price>span {
-  font-size: 46px;
-  font-weight: bold;
-  margin: 0 10px 0 0;
-}
-
-.showMain .contentRight .topContent .itemBox .itemBox__price-detail {
-  font-size: 16px;
-}
-
-.showMain .contentRight .topContent .itemBox .itemDetail {
-  line-height: 1.5;
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
-.showMain .contentRight .topContent .itemBox .table {
-  margin-bottom: 20px;
-}
-
-.showMain .contentRight .topContent .itemBox .table table {
-  width: 100%;
-  height: 375px;
-  border-collapse: collapse;
-  border: 1px solid #f8f8f8;
-}
-
-tbody {
-  display: table-row-group;
-  vertical-align: middle;
-  border-color: inherit;
-}
-
-tr {
-  display: table-row;
-  vertical-align: inherit;
-  border-color: inherit;
-}
-
-.showMain .contentRight .topContent .itemBox .table table th {
-  width: 20%;
-  background-color: #eee;
-  font-weight: 400;
-  padding: 8px;
-  border: 1px solid #dedede;
-  font-size: 14px;
-  text-align: center;
-}
-
-.showMain .contentRight .topContent .itemBox .table table td {
-  width: 61%;
-  padding: 15px 15px;
-  border: 1px solid #dedede;
-  font-size: 14px;
-}
-
-tr {
-  display: table-row;
-  vertical-align: inherit;
-  border-color: inherit;
-}
-
-.showMain .contentRight .topContent .itemBox .table table td a {
-  text-decoration: none;
-  color: #3CCACE;
-}
-
-.showMain .contentRight .topContent .itemBox .optionalArea {
-  display: flex;
-  justify-content: space-between;
-}
-
-.showMain .contentRight .topContent .itemBox .optionalArea ul {
-  margin: 10px 0 0;
-  display: flex;
-}
-
-.showMain .contentRight .topContent .itemBox .optionalArea ul li.likeBtn {
-  margin-right: auto;
-  padding: 6px 10px;
-  border-radius: 40px;
-  color: #3CCACE;
-  border: 1px solid #ffb340;
 }
 
 .fa {
@@ -238,47 +171,6 @@ tr {
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
-}
-
-.fa-star:before {
-  content: "\f005";
-}
-
-.showMain .contentRight .topContent .itemBox .optionalArea ul {
-  margin: 10px 0 0;
-  display: flex;
-}
-
-.showMain .contentRight .topContent .itemBox .optionalArea ul.optional li.optionalBtn {
-  font-size: 14px;
-}
-
-.showMain .contentRight .topContent .itemBox .optionalArea ul.optional li.optionalBtn a {
-  padding: 6px 10px;
-  display: inline-block;
-  border-radius: 4px;
-  color: #333;
-  border: 1px solid #333;
-  text-decoration: none;
-}
-
-.fa {
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-}
-
-.fa-flag:before {
-  content: "\f024";
-}
-
-.showMain .contentRight .topContent .commentBox {
-  padding: 24px;
-  background-color: #fff;
-  margin: 10px 0;
-  text-align: center;
 }
 
 ul {
@@ -289,103 +181,3 @@ ul {
   margin-inline-end: 0px;
   padding-inline-start: 40px;
 }
-
-ul {
-  list-style: none;
-}
-
-input[type="hidden" i] {
-  display: none;
-  -webkit-appearance: initial;
-  background-color: initial;
-  cursor: default;
-  padding: initial;
-  border: initial;
-}
-
-textarea {
-  -webkit-writing-mode: horizontal-tb !important;
-  text-rendering: auto;
-  color: -internal-light-dark-color(black, white);
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: start;
-  -webkit-appearance: textarea;
-  background-color: -internal-light-dark-color(white, black);
-  -webkit-rtl-ordering: logical;
-  flex-direction: column;
-  resize: auto;
-  cursor: text;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  margin: 0em;
-  font: 400 11px system-ui;
-  border-width: 1px;
-  border-style: solid;
-  border-color: initial;
-  border-image: initial;
-  padding: 2px;
-}
-
-input, textarea, select {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-.showMain .contentRight .topContent .commentBox .noticeMsg {
-  padding: 8px;
-  font-size: 14px;
-  background-color: #f8f8f8;
-  margin: 10px 0;
-  text-align: left;
-}
-
-.showMain .contentRight .topContent .commentBox .new_comment .commentBtn, .showMain .contentRight .topContent .commentBox .new_message .commentBtn {
-  font-size: 18px;
-  line-height: 48px;
-  background: #3CCACE;
-  border: 1px solid #3CCACE;
-  color: #fff;
-  width: 60%;
-  font-size: 18px;
-  border-radius: 100px;
-}
-
-.fa-comment:before {
-  content: "\f075";
-}
-
-.showMain .contentRight .links li {
-  float: left;
-}
-
-.showMain .contentRight .links li a {
-  text-decoration: none;
-  color: #3CCACE;
-}
-
-.showMain .contentRight .links li:last-child {
-  float: right;
-}
-
-.showMain .contentRight .relatedItems a {
-  display: block;
-  margin: 24px 0 8px;
-  color: #3CCACE;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 22px;
-  position: relative;
-}
-
-.showMain .contentRight .relatedItems:after {
-  display: block;
-  content: "";
-  clear: both;
-}
-

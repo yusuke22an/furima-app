@@ -5,19 +5,19 @@
   %nav.breadCrumbs
     %ul
       %li
-        %a{:href => "/"} FURIMA
+        = link_to "FURIMA" 
       %li
         %i.fa.fa-angle-right
       %li
-        %a{:href => "#"} ベビー・キッズ
+        = link_to "ベビー・キッズ"
       %li
         %i.fa.fa-angle-right
       %li
-        %a{:href => "#"} ベビー服(男女兼用)  ~95cm
+        = link_to "ベビー服(男女兼用)  ~95cm"
       %li
         %i.fa.fa-angle-right
       %li
-        %a{:href => "#"} アウター
+        = link_to "アウター"
       %li
         %i.fa.fa-angle-right
       %li
@@ -32,14 +32,14 @@
             .itemBox__body
               %ul
                 %li
-                  %img{:src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"}/
+                  = image_tag "/a007.png"
                   %ul
                     %li
-                      %img{:height => "75", :src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", :width => "75"}/
+                      = image_tag "/a003.png", :size =>"75x75"
                     %li
-                      %img{:height => "75", :src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", :width => "75"}/
+                      = image_tag "/a001.png", :size =>"75x75"
                     %li
-                      %img{:height => "75", :src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", :width => "75"}/
+                      = image_tag "/a004.png", :size =>"75x75"
             .itemBox__price
               %span
                 ¥30000
@@ -58,11 +58,11 @@
                   %tr
                     %th カテゴリー
                     %td
-                      %a{:href => "#"} ベビー・キッズ
+                      = link_to "ベビー・キッズ"
                       %br/
-                      %a{:href => "#"} ベビー服(男女兼用)  ~95cm
+                      = link_to "ベビー服(男女兼用)  ~95cm"
                       %br/
-                      %a{:href => "#"} アウター
+                      = link_to "アウター"
                   %tr
                     %th ブランド
                     %td
@@ -78,48 +78,25 @@
                   %tr
                     %th 発送元の地域
                     %td
-                      %a{:href => "#"} 岩手県
+                      = link_to "岩手県"
                   %tr
                     %th 発送日の目安
                     %td 4-7日で発送
             .optionalArea
-              %ul
-                %li#likeBtn.optionalBtn.likeBtn
-                  %i.fa.fa-star
-                  お気に入り 0
               %ul.optional
                 %li.optionalBtn
-                  %a{:href => "#"}
-                    %i.fa.fa-flag
-                    不適切な商品の通報
+                  %i.fa.fa-flag
+                    = link_to "不適切な商品の通報"
           .commentBox
             %ul.commentContents
             %form#new_comment.new_comment{"accept-charset" => "UTF-8", :action => "#", :method => "post"}
               %input{:name => "utf8", :type => "hidden", :value => "✓"}/
               %input{:name => "authenticity_token", :type => "hidden", :value => "1Bczt4lOo7JAdERX2XtCK8vhfifm8Ctxvh39Whs+Okki9MrIKVRqTBeFPZKZJYApdVTQaD4+C7APAiU25/MzZA=="}/
-              -# %textarea#comment_body{:name => "comment[body]", :required => "required"}
-              -# %p.noticeMsg
-                -# 相手のことを考え丁寧なコメントを心がけましょう。
-                -# %br/
-                -# 不快な言葉遣いなどは利用制限や退会処分となることがあります。
               %br/
               %button.commentBtn{:name => "button", :type => "submit"}
                 %i.fa.fa-comment
                 この商品を購入する
-        %ul.links
-          %li
-            %a{:href => "#"}
-              %i.fa.fa-angle-left
-              %span
-              前の商品
-          %li
-            %a{:href => "#"}
-              %span 後ろの商品
-              %i.fa.fa-angle-right
         .relatedItems
-          %a{:href => "#"} 他の商品を見る
-          .productLists
-  %aside.appBanner
-   
+          = link_to "他の商品を見る"
    
 = render "layouts/footer"
