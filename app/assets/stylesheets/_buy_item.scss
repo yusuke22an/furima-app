@@ -25,203 +25,153 @@
     padding: 0;
     width: 700px;
     &--head{
-      padding: 24px 8px;
-      font-size: 18px;
+      padding: 32px;
+      font-size: 22px;
       line-height: 1.5;
       font-weight: bold;
       border-style: solid;
       border-width: 0;
       text-align: center;
+      border-bottom: 1px solid #f5f5f5;
     }
     &--inner{
-      border-top: 1px solid #f5f5f5;
       &__content{
         max-width: 700px;
         width: 100%;
         margin: 0 auto;
-        padding: 0;
+        padding-bottom: 48px;
+        text-align: center;
           .contents{
-            padding: 40px 40px 0;
-            border-top: 1px solid #eee;
-          }
-            .contents-info{
-              font-weight: bold;
-              color: #888;
-              padding-bottom: 40px;
-              .form-question{
-                display: inline-block;
-                width: 14px;
-                height: 14px;
-                border-radius: 50%;
-                text-decoration: none;
-                background-color: #0099e8;
-                color: #fff;
-                line-height: 14px;
-                font-size: 12px;
-                text-align: center;
-              }
-            }
-            .form-group{
+            max-width: 343px;
+            margin: 0 auto;
+            border-top: 1px solid #f5f5f5;
+
+            .buy-item{
+              padding: 32px 16px;
               margin: 0;
-              padding-bottom: 40px;
-              width: 100%;
-              .sell-upload-pict{
-                position: relative;
-                min-height: 162px;
-                background: #f5f5f5;
-                border: 1px dashed #ccc;
-                font-size: 0;
-                text-align: center;
-                transition: box-shadow ease-out .3s;
-              }
-              .input-default{
-                width: 100%;
-                margin: 8px 0 0;
-                height: 48px;
-                border-radius: 4px;
-                line-height: 1.5;
-                font-size: 16px;
-                border: 1px solid #ccc;
-                background-color: #fff;
-              }
-              .input-default-large{
-                display: block;
-                width: 100%;
-                max-width: 100%;
-                margin: 8px 0 0;
-                min-height: 104px;
-                border-radius: 4px;
-                border: 1px solid #ccc;
-                background-color: #fff;
-                line-height: 1.5;
-                font-size: 16px;
+              text-align: center;
+              border-top: 1px solid #f5f5f5;
+              display: flex;
+              &__image{
+
               }
 
-              select{
-                width: 100%;
-                max-width: 100%;
-                position: relative;
-                z-index: 2;
-                height: 48px;
-                margin: 8px 0 0 0;
-                padding: 10px;
-                border-radius: 4px;
-                border: 1px solid #ccc;
-                background: 0;
-                font-size: 16px;
-                line-height: 1.5;
-                cursor: pointer;
-              }
+              &__info{
+                margin-left: 16px;
 
-              &__price{
-                display: flex;
-                align-items: center;
-                padding: 0 0 20px 0;
-                &--left{
-                  width: 50%;
-                  line-height: 48px;
-                  float: left;
+                &__name{
+                  font-size: 14px;
+                  margin: 0;
+                  padding: 0 0 8px;
+                  line-height: 1.5;
+                  text-align: left;
                 }
-                &--right{
-                  width: 50%;
-                  text-align: right;
-                  float: right;
-                  height: 48px;
-                  .input-default-price{
-                    height: 48px;
-                    width: 80%;
-                    margin-left: 10px;
-                    text-align: right;
-                    padding-right: 10px;
-                    border-color: #0099e8;
-                    border-radius: 4px;
-                    line-height: 1.5;
-                    background: #fff;
-                    border: 1px solid #ccc;
-                    font-size: 16px;
+                &__price{
+                  margin: 0;
+                  text-align: left;
+                  font-size: 14px;
+                  font-weight: 600;
+                  display: flex;
+                  &__buy-price{
+
+                  }
+                  &__shipping-chrge{
+
                   }
                 }
               }
+            }
 
-              &__fee{
-                display: flex;
-                align-items: center;
-                padding: 10px 0;
-                font-weight: normal;
-                &--left{
-                  width: 50%;
-                  line-height: 48px;
-                  float: left;
+            .buy-price{
+              align-items: center;
+              padding: 32px 0;
+              font-weight: 600;
+              font-size: 16px;
+              display: flex;
+              justify-content: space-between;
+              &--left{
+                line-height: 48px;
+              }
+              &--right{
+                width: 50%;
+                text-align: right;
+                font-size: 30px;
+                padding-right: 10px;
+              }
+            }
 
-                }
-                &--right{
-                  width: 80%;
-                  text-align: right;
-                  float: right;
-                  padding-right: 10px;
-                }
-              }
-
-              &__profit{
-                display: flex;
-                align-items: center;
-                padding: 10px 0;
-                font-weight: 600;
-                font-size: 16px;
-                &--left{
-                  width: 50%;
-                  line-height: 48px;
-                  float: left;
-                }
-                &--right{
-                  width: 50%;
-                  text-align: right;
-                  font-size: 34px;
-                  float: right;
-                  padding-right: 10px;
-                }
-              }
-              &__border{
-                width: 100%;
-                border-bottom: 1px solid #ccc;
-              }
-
-
-              label{
-                font-weight: 600;
-              }
-              label.pict{
-                font-weight: 600;
-                font-size: 16px;
-              }
-
-              span.form-require{
-                background-color: #3CCACE;
-                margin: 0 0 0 8px;
-                padding: 2px 4px;
-                border-radius: 2px;
-                color: #fff;
-                font-size: 12px;
-                vertical-align: top;
-              }
-              span.form-any{
-                background-color: lightgray;
-                margin: 0 0 0 8px;
-                padding: 2px 4px;
-                border-radius: 2px;
-                color: #fff;
-                font-size: 12px;
-                vertical-align: top;
-              }
-
-              p.caution{
-                margin: 8px 0 0;
+            .method-of-payment{
+              margin: 0;
+              padding: 32px 0;
+              text-align: left;    
+              &__change{
+                margin: 0;
                 padding: 0;
-                line-height: 1.5;
-              }                
-              p.pict-caution{
-                padding: 10px 0 5px 0; 
+                display: flex;
+                justify-content: space-between;
+                p.method{
+                  margin: 0;
+                  font-size: 14px;
+                  padding: 0;
+                  font-weight: 600;
+                }
+                p.change a{
+                  text-align: right;
+                  color: #0098e8;
+                  text-decoration: none;
+                }
               }
+              &__how-to-pay{
+                line-height: 1.5;
+                text-align: left;
+                margin: 8px 0 0;
+                font-size: 14px;
+                i{
+                  font-size: 20px;
+                  line-height: 1.5;
+                }
+              }
+            }
+
+            .shipping-info{
+              margin: 0;
+              padding: 32px 0;
+              text-align: left;    
+              &__change{
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: space-between;
+                p.method{
+                  margin: 0;
+                  font-size: 14px;
+                  padding: 0;
+                  font-weight: 600;
+                }
+                p.change a{
+                  text-align: right;
+                  color: #0098e8;
+                  text-decoration: none;
+                }
+              }
+              &__confirm{
+                line-height: 1.5;
+                text-align: left;
+                margin: 8px 0 0;
+                font-size: 14px;
+              }
+            }
+
+            .border{
+              width: 100%;
+              border-bottom: 1px solid #ccc;
+            }
+          }
+
+          .form-group{
+              margin: 0;
+              padding-bottom: 40px;
+              width: 100%;
 
               .submit-caution{
                line-height: 1.5;
@@ -243,17 +193,6 @@
                 text-align: center;
                 text-decoration: none;
                 margin: 40px 0 auto;
-              }
-              .btn__redirect{
-                background: #aaa;
-                border: 1px solid #aaa;
-                color: #fff;
-                width: 45%;
-                line-height: 48px;
-                font-size: 14px;
-                text-align: center;
-                text-decoration: none;
-                margin: 24px auto 0;
               }
             }  
       }
