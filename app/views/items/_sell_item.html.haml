@@ -18,6 +18,8 @@
               %p.pict-caution 最大10枚までアップロードできます
 
               .sell-upload-pict
+                = f.file_field :photos, multiple: true
+                %br
 
           .contents
             .form-group
