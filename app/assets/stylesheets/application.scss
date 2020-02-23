@@ -9,15 +9,14 @@
 @import "./main";
 @import "./mypage";
 
-
 @import "./show";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "./sell_item";
+@import "./buy_item";
 
-
-
-@import "./sell_item";
+@import "./registration_new";
+@import "./sessions_new";
 
 * {
   box-sizng: border-b;

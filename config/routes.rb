@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: :show
-  resources :items, only: [:index, :new]
+  resources :items, only: [:index, :new, :edit]
+    get 'buy_item', to: :update, controller: 'items'
   resources :comments
   root 'items#index'
   resources :furima
