@@ -98,5 +98,12 @@
                 この商品を購入する
         .relatedItems
           = link_to "他の商品を見る"
+
+%form{:action => "/pay", :method => "post"}
+  %script.payjp-button{"data-key" => "", :src => "https://checkout.pay.jp/"}
+
+%script.payjp-button{"data-key" => "pk_test_0383a1b8f91e8a6e3ea0e2a9", "data-on-created" => "onCreated", "data-partial" => "true", "data-submit-text" => "支払う", "data-text" => "支払う", :src => "https://checkout.pay.jp/", :type => "text/javascript"}
+  :cdata
+
    
 = render "layouts/footer"
