@@ -1,6 +1,5 @@
 = render "layouts/header"
 
-
 %body
   %nav.breadCrumbs
     %ul
@@ -94,16 +93,15 @@
               %input{:name => "authenticity_token", :type => "hidden", :value => "1Bczt4lOo7JAdERX2XtCK8vhfifm8Ctxvh39Whs+Okki9MrIKVRqTBeFPZKZJYApdVTQaD4+C7APAiU25/MzZA=="}/
               %br/
               %button.commentBtn{:name => "button", :type => "submit"}
-                %i.fa.fa-comment
-                この商品を購入する
+                -# %i.fa.fa-comment
+                -# この商品を購入する
+                = form_with url:furima_path do
+                  :plain
+                  %script{type: "text/javascript", src: "https://checkout.pay.jp", class:"payjp-button", "data-text": "この商品を購入する", "data-key": "pk_test_a6229114d3caa8d1ce9392da"}
+
+
         .relatedItems
           = link_to "他の商品を見る"
 
-%form{:action => "/pay", :method => "post"}
-  %script.payjp-button{"data-key" => "", :src => "https://checkout.pay.jp/"}
 
-%script.payjp-button{"data-key" => "pk_test_0383a1b8f91e8a6e3ea0e2a9", "data-on-created" => "onCreated", "data-partial" => "true", "data-submit-text" => "支払う", "data-text" => "支払う", :src => "https://checkout.pay.jp/", :type => "text/javascript"}
-  :cdata
-
-   
 = render "layouts/footer"
