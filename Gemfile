@@ -80,3 +80,5 @@ gem 'font-awesome-sass'
 gem 'haml-rails'
 gem 'pry-rails'
 gem 'ancestry'
+
+gem "nokogiri", ">= 1.10.8"
