@@ -18,7 +18,9 @@
               %p.pict-caution 最大10枚までアップロードできます
 
               .sell-upload-pict
-                = f.file_field :photos, multiple: true
+                = f.fields_for :photos do |i|
+                  = icon('fas', 'image', class: 'icon')
+                  =i.file_field :src ,class: 'file-upload'
                 %br
 
           .contents

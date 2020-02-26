@@ -4,16 +4,25 @@ class ItemsController < ApplicationController
 
   # 商品出品用のアクション
   def new
-    @item = Item.new
+    #@parents = Category.all.order("id ASC").limit(69)
+    @items = Item.new
   end
 
   def create
-    @item = Item.create params.require(:item).permit(:name, :text, :status, :shipping_charges, :shipping_area, :days_to_ship, :price).merge(seller_id: current_user.id)
-    redirect_to root_path
+    @item = current_user.items.new(create_params)
+      if @item.save!
+        redirect_to controller: :items, action: :index ,notice: "投稿完了しました"
+      else
+        render :new
+      end        
   end
-
+  
   # 商品購入機能用のアクション（仮）
   def update
-end
+  end
 
+private
+  def create_params
+    params.require(:item).permit(:name, :text, :status, :shipping_charges, :shipping_area, :days_to_ship, :price).merge(saler_id: current_user.id)
+  end
 end
