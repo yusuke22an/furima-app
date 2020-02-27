@@ -42,15 +42,15 @@
               %label(for="category")カテゴリー
               %span.form-require 必須
               .category-select-wrap
-                .select-wrap
-                  %i.icon-arrow-bottom
-                  = f.select :category_id, [["","-"],["ニット","ニット"]]
-                .select-wrap
-                  %i.icon-arrow-bottom
-                  = f.select :category_id, [["","-"],["ハイゲージ","ハイゲージ"]]
-                .select-wrap
-                  %i.icon-arrow-bottom
-                  = f.select :category_id, [["","-"],["長袖","長袖"]]
+                -# .select-wrap
+                -#   %i.icon-arrow-bottom
+                -#   = f.select :category_id, [["","-"],["ニット","ニット"]]
+                -# .select-wrap
+                -#   %i.icon-arrow-bottom
+                -#   = f.select :category_id, [["","-"],["ハイゲージ","ハイゲージ"]]
+                -# .select-wrap
+                -#   %i.icon-arrow-bottom
+                -#   = f.select :category_id, [["","-"],["長袖","長袖"]]
 
             .form-group
               %label(for="brand_name")ブランド名

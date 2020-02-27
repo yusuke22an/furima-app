@@ -10,11 +10,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = current_user.items.new(create_params)
-      if @item.save!
-        redirect_to controller: :items, action: :index ,notice: "投稿完了しました"
-      else
-        render :new
-      end        
+      # if @item.save!
+      #   redirect_to controller: :items, action: :index ,notice: "投稿完了しました"
+      # else
+      #   render :new
+      # end        
   end
   
   # 商品購入機能用のアクション（仮）
