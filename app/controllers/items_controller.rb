@@ -9,12 +9,13 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = current_user.items.new(create_params)
-      # if @item.save!
-      #   redirect_to controller: :items, action: :index ,notice: "投稿完了しました"
-      # else
-      #   render :new
-      # end        
+    @item = Item.new(create_params)
+    # binding.pry
+      if @item.save!
+        redirect_to controller: :items, action: :index ,notice: "投稿完了しました"
+      else
+        render :new
+      end        
   end
   
   # 商品購入機能用のアクション（仮）
@@ -23,6 +24,6 @@ class ItemsController < ApplicationController
 
 private
   def create_params
-    params.require(:item).permit(:name, :text, :status, :shipping_charges, :shipping_area, :days_to_ship, :price).merge(saler_id: current_user.id)
+    params.require(:item).permit(:name, :text, :status, :shipping_charges, :shipping_area, :days_to_ship, :price, photos:[]).merge(saler_id: current_user.id)
   end
 end
