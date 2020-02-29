@@ -14,10 +14,28 @@
               %label.pict(for="pict")出品画像
               %span.form-require 必須
               %p.pict-caution 最大10枚までアップロードできます
-              .sell-upload-pict
-                = icon('fas', 'image', class: 'icon')
-                =f.file_field :photos,class: 'file-upload',multiple: true
-                %br
+              .pict-uploader
+                .sell-upload-pict
+                  = icon('fas', 'image', class: 'icon')
+                  =f.file_field :photos,class: 'file-upload',multiple: true
+                  %br
+                .sell-upload-pict
+                  = icon('fas', 'image', class: 'icon')
+                  =f.file_field :photos,class: 'file-upload',multiple: true
+                  %br                
+                .sell-upload-pict
+                  = icon('fas', 'image', class: 'icon')
+                  =f.file_field :photos,class: 'file-upload',multiple: true
+                  %br                
+                .sell-upload-pict
+                  = icon('fas', 'image', class: 'icon')
+                  =f.file_field :photos,class: 'file-upload',multiple: true
+                  %br                
+                .sell-upload-pict
+                  = icon('fas', 'image', class: 'icon')
+                  =f.file_field :photos,class: 'file-upload',multiple: true
+                  %br                
+
           .contents
             .form-group
               %label(for="name")商品名
@@ -35,10 +53,10 @@
               %label(for="category")カテゴリー
               %span.form-require 必須
               .category-select-wrap
-                -# .select-wrap
-                -#   %i.icon-arrow-bottom
-                -#   = f.select :category_id, [["","-"],["ニット","ニット"]]
-                -# .select-wrap
+                .select-wrap
+                  %i.icon-arrow-bottom
+                  = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                .select-wrap
                 -#   %i.icon-arrow-bottom
                 -#   = f.select :category_id, [["","-"],["ハイゲージ","ハイゲージ"]]
                 -# .select-wrap
@@ -98,21 +116,22 @@
                   ¥ 
                   = f.text_field :price, class: 'input-default-price', placeholder: "例）300"
 
-              .form-group__border
+              -# 販売利益計算の実装はチームに相談する
+              -# .form-group__border
 
-              .form-group__fee
-                .form-group__fee--left
-                  販売手数料（10%）
-                .form-group__fee--right
-                  %p #{10000 * 0.1}
+              -# .form-group__fee
+              -#   .form-group__fee--left
+              -#     販売手数料（10%）
+              -#   .form-group__fee--right
+              -#     %p #{10000 * 0.1}
 
-              .form-group__border
+              -# .form-group__border
 
-              .form-group__profit
-                .form-group__profit--left
-                  販売利益
-                .form-group__profit--right
-                  ¥ 9,000
+              -# .form-group__profit
+              -#   .form-group__profit--left
+              -#     販売利益
+              -#   .form-group__profit--right
+              -#     ¥ 9,000
 
           .contents
             .form-group

@@ -4,8 +4,11 @@ class ItemsController < ApplicationController
 
   # 商品出品用のアクション
   def new
-    #@parents = Category.all.order("id ASC").limit(69)
     @items = Item.new
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
   end
 
   def create
@@ -22,8 +25,16 @@ class ItemsController < ApplicationController
   def update
   end
 
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+   end
+
+  def get_category_grandchildren
+      @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
 private
   def create_params
-    params.require(:item).permit(:name, :text, :status, :shipping_charges, :shipping_area, :days_to_ship, :price, photos:[]).merge(saler_id: current_user.id)
+    params.require(:item).permit(:name, :text, :status, :shipping_charges, :shipping_area, :days_to_ship, :price, photos:[]).merge(saler_id: current_user.id,category_id: params[category_id])
   end
 end

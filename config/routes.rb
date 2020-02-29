@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: :show
-  resources :items
+  resources :items do
     get 'buy_item', to: :update, controller: 'items'
-    # post 'items/new' => 'items#create'
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
   resources :comments
   root 'items#index'
   resources :furima
