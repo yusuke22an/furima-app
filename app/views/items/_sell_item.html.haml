@@ -50,18 +50,12 @@
           .contents
             .contents-info 商品の詳細
             .form-group
-              %label(for="category")カテゴリー
-              %span.form-require 必須
-              .category-select-wrap
-                .select-wrap
-                  %i.icon-arrow-bottom
-                  = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-                .select-wrap
-                -#   %i.icon-arrow-bottom
-                -#   = f.select :category_id, [["","-"],["ハイゲージ","ハイゲージ"]]
-                -# .select-wrap
-                -#   %i.icon-arrow-bottom
-                -#   = f.select :category_id, [["","-"],["長袖","長袖"]]
+              .listing-product-detail__category
+                %label(for="category")カテゴリー
+                %span.form-require 必須
+                .listing-select-wrapper
+                  .listing-select-wrapper__box
+                    = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
             .form-group
               %label(for="brand_name")ブランド名
               %span.form-any 任意
