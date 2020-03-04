@@ -55,7 +55,10 @@
                 %span.form-require 必須
                 .listing-select-wrapper
                   .listing-select-wrapper__box
-                    = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                    = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "---"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                    -# = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                    -# = f.text_field :category_id, id: 'grand_child_result_id', type: 'hidden'
+
             .form-group
               %label(for="brand_name")ブランド名
               %span.form-any 任意
