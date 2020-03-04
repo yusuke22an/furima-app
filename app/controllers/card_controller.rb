@@ -28,7 +28,7 @@ class CardController < ApplicationController
     end
   end
 
-  def delete #PayjpとCardデータベースを削除します
+  def destroy #PayjpとCardデータベースを削除します
     card = Card.where(user_id: current_user.id).first
     if card.present?
       Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
