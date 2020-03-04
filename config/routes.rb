@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :furima
 
-  resources :card, only: [:new, :show, :delete] do
+  resources :card, only: [:new, :show] do
     collection do
       post 'pay', to: 'card#pay'
+      post 'delete', to: 'card#delete'
     end
   end
 
