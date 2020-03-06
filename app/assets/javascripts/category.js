@@ -1,7 +1,6 @@
 $(function(){
   // カテゴリーセレクトボックスのオプションを作成
   function appendOption(category){
-    // var html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
     var html = `<option value="${category.id}">${category.name}</option>`
     return html;
   }
@@ -67,7 +66,6 @@ $(function(){
       $.ajax({
         url: 'get_category_grandchildren',
         type: 'GET',
-        // data: { child_id: childId },
         data: ('child_id=' + childId),
         dataType: 'json'
       })
