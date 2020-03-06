@@ -5,8 +5,13 @@ Rails.application.routes.draw do
   get 'card/show'
   devise_for :users
   resources :users, only: :show
-  resources :items, only: [:index, :new, :edit]
+  resources :items do
     get 'buy_item', to: :update, controller: 'items'
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
   resources :comments
   root 'items#index'
   resources :furima
