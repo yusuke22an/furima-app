@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
     @items = Item.new
     @category_parent_array = Category.where(ancestry: nil).each do |parent|
     end
-    # @category_parent_array = Category.all.order("id ASC")
   end
 
   def create
@@ -24,9 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def get_category_children
-    # @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
     @category_children = Category.where('ancestry = ?', "#{params[:parent_name]}")
-    # ここの記述を直せば動くと思われる。
   end
 
   def get_category_grandchildren

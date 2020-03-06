@@ -31,18 +31,15 @@ $(function(){
                                 
                               </div>
                             </div>`;
-                            console.log(grandchildSelectHtml)
     $('.listing-product-detail__category').append(grandchildSelectHtml);
   }
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
     var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
-    console.log(parentCategory)
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
-        // data: { parent_name: parentCategory },
         data: ('parent_name=' + parentCategory),
         dataType: 'json'
       })
@@ -65,9 +62,7 @@ $(function(){
   });
   // 子カテゴリー選択後のイベント
   $(document).on('change', '#child_category', function(){
-    // var childId = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
     var childId = $(this).val()
-    console.log(childId)
     if (childId != "---"){ //子カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'get_category_grandchildren',
@@ -77,13 +72,11 @@ $(function(){
         dataType: 'json'
       })
       .done(function(grandchildren){
-        console.log(grandchildren)
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
-            console.log(grandchild)
           });
           appendGrandchidrenBox(insertHTML);
         }
