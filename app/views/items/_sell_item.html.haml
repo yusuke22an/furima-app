@@ -56,9 +56,7 @@
                 .listing-select-wrapper
                   .listing-select-wrapper__box
                     = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "---"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-                    -# = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-                    -# = f.text_field :category_id, id: 'grand_child_result_id', type: 'hidden'
-
+                    -# = f.text_field :category_id, id: category_id, type: 'hidden' 
             .form-group
               %label(for="brand_name")ブランド名
               %span.form-any 任意
