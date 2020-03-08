@@ -8,12 +8,18 @@
       商品の情報を入力
     .sell-page__main--inner
       .sell-page__main--inner__content
-        = form_with model: @items, local: true do |f|
+        = form_with model: @item, local: true do |f|
+          - if @item.errors.any?
+            %ul
+              - # errorsに入っているエラー内容を出力する
+              - @item.errors.full_messages.each do |message|
+                %li= message
+
           .contents
             .form-group
               %label.pict(for="pict")出品画像
               %span.form-require 必須
-              %p.pict-caution 最大10枚までアップロードできます
+              %p.pict-caution 最大5枚までアップロードできます
               .pict-uploader
                 .sell-upload-pict
                   = icon('fas', 'image', class: 'icon')
@@ -55,7 +61,7 @@
                 %span.form-require 必須
                 .listing-select-wrapper
                   .listing-select-wrapper__box
-                    = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "---"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                    = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: ""}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
             .form-group
               %label(for="brand_name")ブランド名
               %span.form-any 任意
@@ -67,7 +73,7 @@
               .category-select-wrap
                 .select-wrap
                   %i.icon-arrow-bottom
-                  = f.select :status, [["","-"],["新品・未使用","新品・未使用"]]
+                  = f.select :status, [["",""],["新品・未使用","新品・未使用"]]
           .contents 
             .contents-info
               .caution 配送について
@@ -79,21 +85,21 @@
               .category-select-wrap
                 .select-wrap
                   %i.icon-arrow-bottom
-                  = f.select :shipping_charges, [["","-"],["送料込み（出品者負担）","送料込み（出品者負担）"],["着払い（購入者負担）","着払い（購入者負担）"]]
+                  = f.select :shipping_charges, [["",""],["送料込み（出品者負担）","送料込み（出品者負担）"],["着払い（購入者負担）","着払い（購入者負担）"]]
             .form-group
               %label(for="shipping_area")発送元の地域
               %span.form-require 必須
               .category-select-wrap
                 .select-wrap
                   %i.icon-arrow-bottom
-                  = f.select :shipping_area, [["","-"],["東京","東京"]]
+                  = f.select :shipping_area, [["",""],["東京","東京"]]
             .form-group
               %label(for="days_to_ship")発送までの日数
               %span.form-require 必須
               .category-select-wrap
                 .select-wrap
                   %i.icon-arrow-bottom
-                  = f.select :days_to_ship, [["","-"],["1-2日で発送","1-2日で発送"],["2-3日で発送","2-3日で発送"],["4-7日で発送","4-7日で発送"]]
+                  = f.select :days_to_ship, [["",""],["1-2日で発送","1-2日で発送"],["2-3日で発送","2-3日で発送"],["4-7日で発送","4-7日で発送"]]
           .contents
             .contents-info
               .caution 販売価格（300〜9,999,999）

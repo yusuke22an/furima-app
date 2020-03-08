@@ -10,7 +10,7 @@ $(function(){
     childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
                           <select class="listing-select-wrapper__box--select" id="child_category">
-                            <option value="---">---</option>
+                            <option value=""></option>
                             ${insertHTML}
                           <select>
                           
@@ -24,7 +24,7 @@ $(function(){
     grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
                               <div class='listing-select-wrapper__box'>
                                 <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
-                                  <option value="---">---</option>
+                                  <option value=""></option>
                                   ${insertHTML}
                                 </select>
                                 
@@ -35,7 +35,7 @@ $(function(){
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
     var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
-    if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
+    if (parentCategory != ""){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
@@ -62,7 +62,7 @@ $(function(){
   // 子カテゴリー選択後のイベント
   $(document).on('change', '#child_category', function(){
     var childId = $(this).val()
-    if (childId != "---"){ //子カテゴリーが初期値でないことを確認
+    if (childId != ""){ //子カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'get_category_grandchildren',
         type: 'GET',
