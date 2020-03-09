@@ -6,17 +6,17 @@ class ItemsController < ApplicationController
   # 商品出品用のアクション
   def new
     @item = Item.new    
-    # @items = Item.new #エラーメッセージの作成のため一時的にコメントアウト
     @category_parent_array = Category.where(ancestry: nil).each do |parent|
     end
   end
 
   def create
     @item = Item.new(create_params)
-    # binding.pry #@item.errorsの確認
     if @item.save
         redirect_to root_path,notice: "投稿完了しました"
     else
+      @category_parent_array = Category.where(ancestry: nil).each do |parent|
+      end
       render :new, notice: "fail"
     end        
   end
