@@ -18,13 +18,20 @@ class PurchaseController < ApplicationController
 
   def pay
     card = Card.where(user_id: current_user.id).first
-    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
-    Payjp::Charge.create(
+    # card = nil # エラーハンドリング用の記述 エラー発生させる時はコメントアウトして下さい。
+    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]  
+    if card.blank?
+      redirect_to controller: "card", action: "new"
+      flash[:notice] = 'カード登録の確認をして下さい.'
+    elsif Payjp::Charge.create(
       amount: "328000", #支払金額を入力（itemテーブル等に紐づけても良い）
       customer: card.customer_id, #顧客ID
       currency: 'jpy', #日本円
     )
-    redirect_to action: 'done' #完了画面に移動
+      redirect_to action: 'done' #完了画面に移動
+    else
+      redirect_to action: "index" 
+      flash[:notice] = '購入に失敗しました.'
+    end
   end
-
 end
