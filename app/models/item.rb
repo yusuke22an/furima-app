@@ -12,5 +12,7 @@ class Item < ApplicationRecord
   validates :shipping_area, presence: true
   validates :days_to_ship, presence: true
   validates :price, presence: true, format:{ with:/\A[0-9]+\z/ }
+  validates :category_id, presence: true
+  validates :saler_id, presence: true
 
 end
