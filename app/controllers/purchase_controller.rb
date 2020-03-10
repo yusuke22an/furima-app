@@ -18,7 +18,7 @@ class PurchaseController < ApplicationController
 
   def pay
     card = Card.where(user_id: current_user.id).first
-    card = nil # エラーハンドリング用の記述 エラー発生させる時はコメントアウトして下さい。
+    # card = nil # エラーハンドリング用の記述 エラー発生させる時はコメントアウトして下さい。
     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]  
     if card.blank?
       redirect_to controller: "card", action: "new"
