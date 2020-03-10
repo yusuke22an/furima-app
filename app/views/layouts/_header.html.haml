@@ -11,6 +11,28 @@
       .header__inner__bottom__left
         .header__inner__bottom__left__category
           カテゴリー
+          .header__inner__bottom__left__category__toggle
+            .header__inner__bottom__left__category__toggle__parent
+              - @categories.each do |parent|
+                - unless parent.ancestry.present? 
+                  .header__inner__bottom__left__category__toggle__parent__tree{data: {id: parent.id}}
+                    =link_to root_path, class: "header__inner__bottom__left__category__toggle__parent__tree__name" do
+                      = parent.name
+            .header__inner__bottom__left__category__toggle__child
+              - @categories.each do |parent|
+                - unless parent.ancestry.present? 
+                  -parent.children.each do |child|
+                    .header__inner__bottom__left__category__toggle__child__tree{data: {ancestry: child.ancestry, id: child.id}} 
+                      =link_to root_path, class: "header__inner__bottom__left__category__toggle__child__tree__name" do
+                        = child.name
+            .header__inner__bottom__left__category__toggle__grandchild
+              - @categories.each do |parent|
+                - unless parent.ancestry.present? 
+                  -parent.children.each do |child|
+                    -child.children.each do |grandchild|
+                      .header__inner__bottom__left__category__toggle__grandchild__tree{data: {ancestry: grandchild.ancestry}}
+                        =link_to root_path, class: "header__inner__bottom__left__category__toggle__grandchild__tree__name" do
+                          = grandchild.name
         .header__inner__bottom__left__brand
           ブランド
       .header__inner__bottom__right
