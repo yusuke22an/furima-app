@@ -10,7 +10,7 @@ FactoryBot.define do
     price             {"9999999"}
     saler_id          {"99"}
     category_id       {"5"}
-    photos            {File.new("#{Rails.root}/public/icon-01.png")}
+    # photos            {File.open("#{Rails.root}/public/icon_camera.png")}
   end
 
 end

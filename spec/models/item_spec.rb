@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Item do
+
   describe "#商品出品のテスト" do
 
     #全項目
