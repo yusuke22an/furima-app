@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
+    @categories = Category.all
   end
 
   # 商品出品用のアクション
