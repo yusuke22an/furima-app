@@ -31,6 +31,10 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.where('ancestry LIKE ?', "%/#{params[:child_id]}")
   end
 
+  def show
+    @categories = Category.all
+  end
+
 private
   def create_params
     params.require(:item).permit(:name, :text, :category_id, :brand_name, :status, :shipping_charges, :shipping_area, :days_to_ship, :price, photos:[]).merge(saler_id: current_user.id)
