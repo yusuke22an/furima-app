@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end
   resources :comments
   root 'items#index'
-  resources :furima
 
   resources :card, only: [:new, :show, :destroy] do
     collection do
