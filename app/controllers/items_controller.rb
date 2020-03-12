@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @categories = Category.all
+    @items = Item.where(buyer_id: nil).order("created_at DESC").limit(6)
   end
 
   # 商品出品用のアクション
@@ -16,7 +17,7 @@ class ItemsController < ApplicationController
         redirect_to root_path,notice: "投稿完了しました"
       else
         render :new, notice: "fail"
-      end        
+      end
   end
   
   # 商品購入機能用のアクション（仮）
