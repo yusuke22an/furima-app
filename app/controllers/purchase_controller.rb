@@ -1,4 +1,5 @@
 class PurchaseController < ApplicationController
+  before_action :set_item, only: [:index, :pay, :done]
   require 'payjp'
 
   def index
@@ -24,14 +25,20 @@ class PurchaseController < ApplicationController
       redirect_to controller: "card", action: "new"
       flash[:notice] = '購入失敗です。カード登録の確認をして下さい.'
     elsif Payjp::Charge.create(
-      amount: "328000", #支払金額を入力（itemテーブル等に紐づけても良い）
+      amount: @item.price, #"328000", #支払金額を入力（itemテーブル等に紐づけても良い）
       customer: card.customer_id, #顧客ID
       currency: 'jpy', #日本円
     )
+      @item.update(buyer_id: current_user.id)
       redirect_to action: 'done' #完了画面に移動
     else
       redirect_to action: "index" 
       flash[:notice] = '購入に失敗しました.'
     end
+  end
+  private
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
