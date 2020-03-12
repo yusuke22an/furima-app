@@ -36,6 +36,8 @@ class PurchaseController < ApplicationController
       flash[:notice] = '購入に失敗しました.'
     end
   end
+
+  
   private
 
   def set_item
