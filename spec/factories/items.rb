@@ -7,10 +7,11 @@ FactoryBot.define do
     shipping_charges  {"気分次第"}
     shipping_area     {"そのあたり"}
     days_to_ship      {"そのうち"}
-    price             {"9999999"}
-    saler_id          {"99"}
+    price             {"9999998"}
+    saler             {create(:user)}
     category_id       {"5"}
-    # photos            {File.open("#{Rails.root}/public/icon_camera.png")}
+    after(:build) do |hoge|
+      hoge.photos.attach(io: File.open('public/icon-01.png'), filename: 'icon-01.png', content_type: 'image/png')
+    end
   end
-
 end

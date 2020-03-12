@@ -23,8 +23,7 @@ describe Item do
       item.valid?
       expect(item.errors[:text]).to include("can't be blank")
     end
-    # 商品説明が1000文字を超えたら登録できないテスト追記
-
+    
     #satus
     it "ステータスが空の場合登録できないテスト" do
       item = build(:item, status: "")
@@ -59,8 +58,6 @@ describe Item do
       item.valid?
       expect(item.errors[:price]).to include("can't be blank")
     end
-    # 価格が9,999,999を超えたら登録できないテスト追記
-    # 価格が300以下だったら登録できないテスト追記
 
     it "saler_idに入るユーザーidがなければ登録できないテスト" do
       item = build(:item, saler_id: "")
@@ -72,12 +69,6 @@ describe Item do
       item = build(:item, category_id: "")
       item.valid?
       expect(item.errors[:category_id]).to include("can't be blank")
-    end
-
-    it "photosに入るdataがなければ登録できないテスト" do
-      item = build(:item, photos: "")
-      item.valid?
-      expect(item.errors[:photos]).to include("can't be blank")
     end
   end
 end
