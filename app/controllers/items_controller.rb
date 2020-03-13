@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   def index
     @categories = Category.all
+    @items = Item.where(buyer_id: nil).order("created_at DESC").limit(6)
   end
 
   # 商品出品用のアクション
@@ -32,6 +33,10 @@ class ItemsController < ApplicationController
 
   def get_category_grandchildren
     @category_grandchildren = Category.where('ancestry LIKE ?', "%/#{params[:child_id]}")
+  end
+
+  def show
+    @categories = Category.all
   end
 
 private

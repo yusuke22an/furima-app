@@ -24,12 +24,12 @@
     .mypage__container__left
       .mypage__container__left__nav
         %ul.mypage__container__left__nav__list
-          %li.mypage__container__left__nav__list__item.mypage__container__left__nav__list__item--active
+          %li.mypage__container__left__nav__list__item--active
             = link_to "#", class: "mypage__container__left__nav__list__item__a" do
               マイページ
             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
           %li.mypage__container__left__nav__list__item
-            = link_to "#", class: "mypage__container__left__nav__list__item__a" do
+            = link_to new_item_path(current_user), class: "mypage__container__left__nav__list__item__a" do
               出品する
             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
           %li.mypage__container__left__nav__list__item
@@ -38,9 +38,9 @@
             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
           %li.mypage__container__left__nav__list__item
             = link_to "#", class: "mypage__container__left__nav__list__item__a" do
-              メール/パスワード
+              登録情報編集
             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
           %li.mypage__container__left__nav__list__item
-            = link_to "#", class: "mypage__container__left__nav__list__item__a" do
-              ログアウト
+            = link_to destroy_user_session_path, method: :delete, class: "mypage__container__left__nav__list__item__a" do
+              サインアウト
             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
