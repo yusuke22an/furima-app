@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def index
     @categories = Category.all
     @items = Item.where(buyer_id: nil).order("created_at DESC").limit(6)
@@ -6,7 +7,7 @@ class ItemsController < ApplicationController
 
   # 商品出品用のアクション
   def new
-    @items = Item.new
+    @item = Item.new    
     @category_parent_array = Category.where(ancestry: nil).each do |parent|
     end
   end
@@ -15,9 +16,11 @@ class ItemsController < ApplicationController
     @item = Item.new(create_params)
     if @item.save
         redirect_to root_path,notice: "投稿完了しました"
-      else
-        render :new, notice: "fail"
+    else
+      @category_parent_array = Category.where(ancestry: nil).each do |parent|
       end
+      render :new, notice: "fail"
+    end        
   end
   
   # 商品購入機能用のアクション（仮）
