@@ -15,7 +15,7 @@ RSpec.describe PurchaseController, type: :controller do
         customer_id: Payjp::Customer.create[:cards][:data][0][:customer],
         card_id: Payjp::Customer.create[:cards][:data][0][:id]
       )
-      get :index
+      get :index, params: { item_id: item.id }
       expect(response).to have_http_status(:success)
     end
   end

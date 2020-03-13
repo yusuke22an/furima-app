@@ -23,7 +23,7 @@ RSpec.describe CardController, type: :controller do
         customer_id: Payjp::Customer.create[:cards][:data][0][:customer],
         card_id: Payjp::Customer.create[:cards][:data][0][:id]
       )
-      get :show
+      get :show, params: { card_id: card.id }
       expect(response).to have_http_status(:success)
     end
   end
