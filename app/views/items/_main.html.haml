@@ -87,105 +87,16 @@
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
   .main__pickup
     .main__pickup__title
-      ピックアップカテゴリー
+      新規投稿商品
+    .main__pickup__bar
     .main__pickup__box
-      .main__pickup__box__name
-        新規投稿商品
       .main__pickup__box__items
-        .main__pickup__box__items__item
-          .main__pickup__box__items__item__picture
-            = image_tag '/a007.png', class: 'main__pickup__box__items__item__picture__img'
-          .main__pickup__box__items__item__list
-            .main__pickup__box__items__item__list__name
-              product3
-            .main__pickup__box__items__item__list__details
-              %ul.main__pickup__box__items__item__list__details__ul
-                %li.main__pickup__box__items__item__list__details__ul__li
-                  30000円
-                %li.main__pickup__box__items__item__list__details__ul__li
-                  = icon 'fa', 'fa fa-star'
-                  0
-              %p.main__pickup__box__items__item__list__details__p
-                (税込)
-        .main__pickup__box__items__item
-          .main__pickup__box__items__item__picture
-            = image_tag '/a004.png', class: 'main__pickup__box__items__item__picture__img'
-          .main__pickup__box__items__item__list
-            .main__pickup__box__items__item__list__name
-              product2
-            .main__pickup__box__items__item__list__details
-              %ul.main__pickup__box__items__item__list__details__ul
-                %li.main__pickup__box__items__item__list__details__ul__li
-                  20000円
-                %li.main__pickup__box__items__item__list__details__ul__li
-                  = icon 'fa', 'fa fa-star'
-                  0
-              %p.main__pickup__box__items__item__list__details__p
-                (税込)
-        .main__pickup__box__items__item
-          .main__pickup__box__items__item__picture
-            = image_tag '/a001.png', class: 'main__pickup__box__items__item__picture__img'
-          .main__pickup__box__items__item__list
-            .main__pickup__box__items__item__list__name
-              product1
-            .main__pickup__box__items__item__list__details
-              %ul.main__pickup__box__items__item__list__details__ul
-                %li.main__pickup__box__items__item__list__details__ul__li
-                  10000円
-                %li.main__pickup__box__items__item__list__details__ul__li
-                  = icon 'fa', 'fa fa-star'
-                  0
-              %p.main__pickup__box__items__item__list__details__p
-                (税込)
-  .main__pickup2
-    .main__pickup2__title
-      ピックアップブランド
-    .main__pickup2__box
-      .main__pickup2__box__name
-        アーカイバ
-      .main__pickup2__box__items
-        .main__pickup2__box__items__item
-          .main__pickup2__box__items__item__picture
-            = image_tag '/a007.png', class: 'main__pickup2__box__items__item__picture__img'
-          .main__pickup2__box__items__item__list
-            .main__pickup2__box__items__item__list__name
-              product3
-            .main__pickup2__box__items__item__list__details
-              %ul.main__pickup2__box__items__item__list__details__ul
-                %li.main__pickup2__box__items__item__list__details__ul__li
-                  30000円
-                %li.main__pickup2__box__items__item__list__details__ul__li
-                  = icon 'fa', 'fa fa-star'
-                  0
-              %p.main__pickup2__box__items__item__list__details__p
-                (税込)
-        .main__pickup2__box__items__item
-          .main__pickup2__box__items__item__picture
-            = image_tag '/a004.png', class: 'main__pickup2__box__items__item__picture__img'
-          .main__pickup2__box__items__item__list
-            .main__pickup2__box__items__item__list__name
-              product2
-            .main__pickup2__box__items__item__list__details
-              %ul.main__pickup2__box__items__item__list__details__ul
-                %li.main__pickup2__box__items__item__list__details__ul__li
-                  20000円
-                %li.main__pickup2__box__items__item__list__details__ul__li
-                  = icon 'fa', 'fa fa-star'
-                  0
-              %p.main__pickup2__box__items__item__list__details__p
-                (税込)
-        .main__pickup2__box__items__item
-          .main__pickup2__box__items__item__picture
-            = image_tag '/a001.png', class: 'main__pickup2__box__items__item__picture__img'
-          .main__pickup2__box__items__item__list
-            .main__pickup2__box__items__item__list__name
-              product1
-            .main__pickup2__box__items__item__list__details
-              %ul.main__pickup2__box__items__item__list__details__ul
-                %li.main__pickup2__box__items__item__list__details__ul__li
-                  10000円
-                %li.main__pickup2__box__items__item__list__details__ul__li
-                  = icon 'fa', 'fa fa-star'
-                  0
-              %p.main__pickup2__box__items__item__list__details__p
-                (税込)
+        - @items.each do |item|
+          .main__pickup__box__items__item
+            .main__pickup__box__items__item__picture
+              = image_tag item.photos[0].variant(auto_orient: true), class: 'main__pickup__box__items__item__picture__img'
+            .main__pickup__box__items__item__list
+              .main__pickup__box__items__item__list__name
+                = item.name
+              .main__pickup__box__items__item__list__price
+                = "#{item.price}円"
