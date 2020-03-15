@@ -27,13 +27,13 @@
       .contentRight
         .topContent
           .itemBox
-            %p= @item.name
+            = @item.name
 
             .itemBox__body
               = image_tag @item.photos[0].variant(auto_orient: true), class: 'itemBox__body__img'
             .itemBox__price
               %span
-                %p= ("#{@item.price} 円")
+                = ("#{@item.price} 円")
               .itemBox__price-detail
                 %span
                   (税込)
