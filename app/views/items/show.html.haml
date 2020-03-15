@@ -20,67 +20,59 @@
       %li
         %i.fa.fa-angle-right
       %li
-        %p product3
+        = @item.name
   .main
     .showMain
       .contentLeftqq
       .contentRight
         .topContent
           .itemBox
-            %h2.itemBox__name product3
+            %p= @item.name
+
             .itemBox__body
-              %ul
-                %li
-                  = image_tag "/a007.png"
-                  %ul
-                    %li
-                      = image_tag "/a003.png", :size =>"75x75"
-                    %li
-                      = image_tag "/a001.png", :size =>"75x75"
-                    %li
-                      = image_tag "/a004.png", :size =>"75x75"
+              = image_tag @item.photos[0].variant(auto_orient: true), class: 'itemBox__body__img'
             .itemBox__price
               %span
-                ¥30000
+                %p= ("#{@item.price} 円")
               .itemBox__price-detail
                 %span
                   (税込)
-                %span
-                  送料込み
-            .itemDetail product3
+            .itemDetail 
             .table
               %table
                 %tbody
                   %tr
                     %th 出品者
-                    %td hoge
+                    %td
+                      = @item.saler.nickname
                   %tr
                     %th カテゴリー
                     %td
-                      = link_to "ベビー・キッズ"
+                      = @parent
                       %br/
-                      = link_to "ベビー服(男女兼用)  ~95cm"
+                      = @child if @child.present?
                       %br/
-                      = link_to "アウター"
-                  %tr
-                    %th ブランド
-                    %td
-                  %tr
-                    %th 商品のサイズ
-                    %td
+                      = @grand_child if @grand_child.present?
+                  -# %tr    一旦コメントアウトしてます。
+                  -#   %th ブランド
+                  -#   %td
+                  -# %tr
+                  -#   %th 商品のサイズ
+                  -#   %td
                   %tr
                     %th 商品の状態
-                    %td 未使用に近い
+                    %td= @item.status
                   %tr
                     %th 配送料の負担
-                    %td 送料込み（出品者負担）
+                    %td= @item.shipping_charges
                   %tr
                     %th 発送元の地域
                     %td
-                      = link_to "岩手県"
+                      = @item.shipping_area
                   %tr
                     %th 発送日の目安
-                    %td 4-7日で発送
+                    %td= @item.days_to_ship
+
             .optionalArea
               %ul.optional
                 %li.optionalBtn
@@ -94,8 +86,9 @@
               %br/
               %button.commentBtn{:name => "button", :type => "submit"}
                 %i.fa.fa-comment
-                この商品を購入する
+                = link_to "この商品を購入する", item_buy_item_path(@item)
         .relatedItems
-          = link_to "他の商品を見る"
+          = link_to "削除"
+          = link_to "編集"
    
 = render "layouts/footer"

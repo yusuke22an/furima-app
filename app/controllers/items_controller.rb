@@ -37,6 +37,21 @@ class ItemsController < ApplicationController
 
   def show
     @categories = Category.all
+    @item = Item.find(params[:id])
+    if @item.category.parent == nil
+      # 一番上のカテゴリ
+      @parent = @item.category.name
+    elsif @item.category.parent.parent == nil
+      # 真ん中のカテゴリ
+      @parent = @item.category.parent.name
+      @child = @item.category.name
+    else
+      # 一番下のカテゴリ
+      @parent = @item.category.parent.parent.name
+      @child = @item.category.parent.name
+      @grand_child = @item.category.name
+    end
+
   end
 
 private
