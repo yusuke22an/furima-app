@@ -51,7 +51,6 @@ class ItemsController < ApplicationController
       @child = @item.category.parent.name
       @grand_child = @item.category.name
     end
-
   end
 
 private

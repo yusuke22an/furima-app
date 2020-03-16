@@ -84,11 +84,16 @@
               %input{:name => "utf8", :type => "hidden", :value => "✓"}/
               %input{:name => "authenticity_token", :type => "hidden", :value => "1Bczt4lOo7JAdERX2XtCK8vhfifm8Ctxvh39Whs+Okki9MrIKVRqTBeFPZKZJYApdVTQaD4+C7APAiU25/MzZA=="}/
               %br/
-              %button.commentBtn{:name => "button", :type => "submit"}
-                %i.fa.fa-comment
-                = link_to "この商品を購入する", item_buy_item_path(@item)
-        .relatedItems
-          = link_to "削除"
-          = link_to "編集"
+              -if user_signed_in? && current_user.id == @item.saler_id 
+               
+                .relatedItems
+                  = link_to "編集"
+                  = link_to "削除"
+              -else 
+                %button.commentBtn{:name => "button", :type => "submit"}
+                  %i.fa.fa-comment
+                    = link_to "この商品を購入する", item_buy_item_path(@item)
+            
+             
    
 = render "layouts/footer"
