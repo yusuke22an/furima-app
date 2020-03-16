@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 
+  # 商品一覧表示(トップページ)用のアクション
   def index
     @categories = Category.all
     @items = Item.where(buyer_id: nil).order("created_at DESC").limit(6)
@@ -35,6 +36,7 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.where('ancestry LIKE ?', "%/#{params[:child_id]}")
   end
 
+  # 商品詳細表示用のアクション
   def show
     @categories = Category.all
     @item = Item.find(params[:id])
@@ -51,7 +53,13 @@ class ItemsController < ApplicationController
       @child = @item.category.parent.name
       @grand_child = @item.category.name
     end
+  end
 
+  # 商品削除用のアクション
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to user_path(current_user), notice: "商品名「#{item.name}」を削除しました。"
   end
 
 private
