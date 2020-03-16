@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
 
   end
 
+  # 商品出品時のデータ保存用アクション
   def create
     @item = Item.new(create_params)
     if @item.save
@@ -33,6 +34,7 @@ class ItemsController < ApplicationController
   def update
   end
 
+  # 商品出品時のカテゴリー取得に仕様
   def get_category_children
     @category_children = Category.where('ancestry = ?', "#{params[:parent_name]}")
   end
@@ -68,6 +70,7 @@ class ItemsController < ApplicationController
   end
 
 private
+  # 商品投稿時のparams
   def create_params
     params.require(:item).permit(:name, :text, :category_id, :brand_name, :status, :shipping_charges, :shipping_area, :days_to_ship, :price, photos:[]).merge(saler_id: current_user.id)
   end

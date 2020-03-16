@@ -18,7 +18,7 @@ $(function(){
 
       var num = $('.item-image').length + 1 + i
       fileReader.readAsDataURL(file);
-      //画像が10枚になったら超えたらドロップボックスを削除する
+      //画像が5枚になったら超えたらドロップボックスを削除する
       if (num == 5){
         $('#image-box__container').css('display', 'none')   
       }
