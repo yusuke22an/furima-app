@@ -10,8 +10,7 @@ class ItemsController < ApplicationController
   def new
     if user_signed_in?
       @item = Item.new    
-      @category_parent_array = Category.where(ancestry: nil).each do |parent|
-      end
+      @category_parent_array = Category.where(ancestry: nil)
     else
       redirect_to new_user_session_path
     end
@@ -24,8 +23,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to controller: :users, action: :show, id: current_user.id
     else
-      @category_parent_array = Category.where(ancestry: nil).each do |parent|
-      end
+      @category_parent_array = Category.where(ancestry: nil)
       render :new, notice: "fail"
     end        
   end
