@@ -8,9 +8,14 @@ class ItemsController < ApplicationController
 
   # 商品出品用のアクション
   def new
-    @item = Item.new    
-    @category_parent_array = Category.where(ancestry: nil).each do |parent|
+    if user_signed_in?
+      @item = Item.new    
+      @category_parent_array = Category.where(ancestry: nil).each do |parent|
+      end
+    else
+      redirect_to new_user_session_path
     end
+
   end
 
   def create
