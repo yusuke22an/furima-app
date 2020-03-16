@@ -88,12 +88,10 @@
                
                 .relatedItems
                   = link_to "編集"
-                  = link_to "削除"
+                  = link_to "削除", @item, method: :delete, data: { confirm: "商品名「#{@item.name}」を削除します。よろしいですか？"}
               -else 
                 %button.commentBtn{name: "button", type: "submit"}
                   %i.fa.fa-comment
                     = link_to "この商品を購入する", item_buy_item_path(@item)
-            
-             
    
 = render "layouts/footer"
