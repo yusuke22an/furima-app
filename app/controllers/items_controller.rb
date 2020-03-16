@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(create_params)
     if @item.save
-        redirect_to root_path,notice: "投稿完了しました"
+      redirect_to controller: :users, action: :show, id: current_user.id
     else
       @category_parent_array = Category.where(ancestry: nil).each do |parent|
       end
