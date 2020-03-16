@@ -33,8 +33,8 @@
               出品する
             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
           %li.mypage__container__left__nav__list__item
-            = link_to "#", class: "mypage__container__left__nav__list__item__a" do
-              支払い方法
+            = link_to new_card_path(@card), class: "mypage__container__left__nav__list__item__a" do
+              支払いカードの登録
             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
           %li.mypage__container__left__nav__list__item
             = link_to "#", class: "mypage__container__left__nav__list__item__a" do
