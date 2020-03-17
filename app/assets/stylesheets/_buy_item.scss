@@ -193,6 +193,7 @@
                 text-align: center;
                 text-decoration: none;
                 margin: 40px 0 auto;
+                display: block;
               }
             }  
       }
@@ -226,4 +227,16 @@
       font-size: 13px;
     }
   }
+}
+
+
+.itemBox__body__img{
+  width: 80px;
+  height: 90px;
+}
+
+
+.itemBox__body__show__img{
+  width: 450px;
+  height: 270px;
 }

@@ -10,3 +10,5 @@
 = form_tag(card_path(current_user), method: :delete, id: 'charge-form',  name: "inputForm") do
   %input{ type: "hidden", name: "card_id", value: "" }
   %button 削除する
+
+= link_to "マイページへ", user_path(current_user.id)

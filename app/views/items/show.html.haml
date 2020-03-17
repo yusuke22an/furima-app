@@ -30,7 +30,7 @@
             = @item.name
 
             .itemBox__body
-              = image_tag @item.photos[0].variant(auto_orient: true), class: 'itemBox__body__img'
+              = image_tag @item.photos[0].variant(auto_orient: true), class: 'itemBox__body__show__img'
             .itemBox__price
               %span
                 = ("#{@item.price} 円")
@@ -92,6 +92,6 @@
               -else 
                 %button.commentBtn{name: "button", type: "submit"}
                   %i.fa.fa-comment
-                    = link_to "この商品を購入する", item_buy_item_path(@item)
+                    = link_to "購入確認画面へ進む", item_purchase_index_path(@item)
    
 = render "layouts/footer"
