@@ -6,26 +6,56 @@
         .mypage__container__right__user__name
           = @user.nickname
         .mypage__container__right__user__exhibitions
-          出品数
+          累計出品数
           %span.mypage__container__right__user__exhibitions__number
-            0
+            = @ruikei_shuppin_items.length
       .mypage__container__right__transaction
         .mypage__container__right__transaction__title
-          購入した商品 -- 取引中
-        .mypage__container__right__transaction__content
-          .mypage__container__right__transaction__content__text
-            取引中の商品がありません
+          出品中の商品
+        - if @shuppin_chu_items.present?
+          .mypage__container__right__transaction__present
+            .mypage__container__right__transaction__present__items
+              - @shuppin_chu_items.each do |item|
+                .mypage__container__right__transaction__present__items__item
+                  = link_to item_path(item) do
+                    = image_tag item.photos[0].variant(auto_orient: true), class: 'mypage__container__right__transaction__present__items__item__picture'
+                  .mypage__container__right__transaction__present__items__item__list
+                    .mypage__container__right__transaction__present__items__item__list__name
+                      = item.name
+                    .mypage__container__right__transaction__present__items__item__list__price
+                      = "#{item.price}円"
+            = paginate(@shuppin_chu_items, param_name: 'shuppin_chu_page')
+        - else
+          .mypage__container__right__transaction__nil
+            = image_tag '/logo.png', class: "mypage__container__right__transaction__nil__image"
+            .mypage__container__right__transaction__nil__text
+              出品中の商品がありません
       .mypage__container__right__transaction
         .mypage__container__right__transaction__title
-          購入した商品 -- 過去の取引
-        .mypage__container__right__transaction__content
-          .mypage__container__right__transaction__content__text
-            過去に取引した商品がありません
+          購入した商品
+        - if @katta_items.present?
+          .mypage__container__right__transaction__present
+            .mypage__container__right__transaction__present__items
+              - @katta_items.each do |item|
+                .mypage__container__right__transaction__present__items__item
+                  = link_to "#" do
+                    = image_tag item.photos[0].variant(auto_orient: true), class: 'mypage__container__right__transaction__present__items__item__picture'
+                  .mypage__container__right__transaction__present__items__item__list
+                    .mypage__container__right__transaction__present__items__item__list__name
+                      = item.name
+                    .mypage__container__right__transaction__present__items__item__list__price
+                      = "#{item.price}円"
+            = paginate(@katta_items, param_name: 'katta_page')
+        - else
+          .mypage__container__right__transaction__nil
+            = image_tag '/logo.png', class: "mypage__container__right__transaction__nil__image"
+            .mypage__container__right__transaction__nil__text
+              過去に購入した商品がありません
     .mypage__container__left
       .mypage__container__left__nav
         %ul.mypage__container__left__nav__list
           %li.mypage__container__left__nav__list__item--active
-            = link_to "#", class: "mypage__container__left__nav__list__item__a" do
+            = link_to user_path(current_user), class: "mypage__container__left__nav__list__item__a" do
               マイページ
             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
           %li.mypage__container__left__nav__list__item
@@ -33,8 +63,8 @@
               出品する
             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
           %li.mypage__container__left__nav__list__item
-            = link_to "#", class: "mypage__container__left__nav__list__item__a" do
-              支払い方法
+            = link_to card_path(current_user), class: "mypage__container__left__nav__list__item__a" do
+              クレジットカード
             = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
           %li.mypage__container__left__nav__list__item
             = link_to "#", class: "mypage__container__left__nav__list__item__a" do
