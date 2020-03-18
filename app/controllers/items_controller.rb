@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_category_parent_array, only: [:new, :create, :edit, :update]
 
   # 商品一覧表示(トップページ)用のアクション
   def index
@@ -9,12 +11,10 @@ class ItemsController < ApplicationController
   # 商品出品用のアクション
   def new
     if user_signed_in?
-      @item = Item.new    
-      @category_parent_array = Category.where(ancestry: nil)
+      @item = Item.new
     else
       redirect_to new_user_session_path
     end
-
   end
 
   # 商品出品時のデータ保存用アクション
@@ -23,16 +23,11 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to controller: :users, action: :show, id: current_user.id
     else
-      @category_parent_array = Category.where(ancestry: nil)
       render :new, notice: "fail"
     end        
   end
-  
-  # 商品購入機能用のアクション（仮）
-  def update
-  end
 
-  # 商品出品時のカテゴリー取得に仕様
+  # 商品出品時のカテゴリー取得に使用
   def get_category_children
     @category_children = Category.where('ancestry = ?', "#{params[:parent_name]}")
   end
@@ -40,11 +35,10 @@ class ItemsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.where('ancestry LIKE ?', "%/#{params[:child_id]}")
   end
-
+  
   # 商品詳細表示用のアクション
   def show
     @categories = Category.all
-    @item = Item.find(params[:id])
     if @item.category.parent == nil
       # 一番上のカテゴリ
       @parent = @item.category.name
@@ -59,17 +53,41 @@ class ItemsController < ApplicationController
       @grand_child = @item.category.name
     end
   end
+  
+  # 商品情報編集用のアクション
+  def edit
+  end
+
+  # 商品情報編集時のデータ保存用アクション
+  def update
+    if @item.update(create_params)
+      redirect_to item_path(@item), notice: "商品名「#{@item.name}」の情報を更新しました。"
+    else
+      render :edit, notice: "fail"
+    end
+  end
 
   # 商品削除用のアクション
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to user_path(current_user), notice: "商品名「#{item.name}」を削除しました。"
+    @item.destroy
+    redirect_to user_path(current_user), notice: "商品名「#{@item.name}」を削除しました。"
   end
 
 private
-  # 商品投稿時のparams
+
+  # 商品出品時のparams
   def create_params
     params.require(:item).permit(:name, :text, :category_id, :brand_name, :status, :shipping_charges, :shipping_area, :days_to_ship, :price, photos:[]).merge(saler_id: current_user.id)
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_category_parent_array
+    @category_parent_array = Category.where(ancestry: nil)
+  end
 end
+
+
+

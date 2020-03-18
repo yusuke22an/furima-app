@@ -1,4 +1,4 @@
 //noticeをhide
 $(document).ready(function() {
-  $('.notifications').fadeOut(4000);
+  $('.notification').fadeOut(4000);
 });
