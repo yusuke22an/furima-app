@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
     else
       redirect_to new_user_session_path
     end
-
   end
 
   # 商品出品時のデータ保存用アクション
@@ -27,12 +26,8 @@ class ItemsController < ApplicationController
       render :new, notice: "fail"
     end        
   end
-  
-  # 商品購入機能用のアクション（仮）
-  def update
-  end
 
-  # 商品出品時のカテゴリー取得に仕様
+  # 商品出品時のカテゴリー取得に使用
   def get_category_children
     @category_children = Category.where('ancestry = ?', "#{params[:parent_name]}")
   end
@@ -40,7 +35,7 @@ class ItemsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.where('ancestry LIKE ?', "%/#{params[:child_id]}")
   end
-
+  
   # 商品詳細表示用のアクション
   def show
     @categories = Category.all
@@ -59,6 +54,23 @@ class ItemsController < ApplicationController
       @grand_child = @item.category.name
     end
   end
+  
+  # 商品情報編集用のアクション
+  def edit
+    @item = Item.find(params[:id])
+    @category_parent_array = Category.where(ancestry: nil)
+  end
+
+  # 商品情報編集時のデータ保存用アクション
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(create_params)
+      redirect_to item_path(@item), notice: "商品名「#{@item.name}」の情報を更新しました。"
+    else
+      @category_parent_array = Category.where(ancestry: nil)
+      render :edit, notice: "fail"
+    end
+  end
 
   # 商品削除用のアクション
   def destroy
@@ -68,7 +80,7 @@ class ItemsController < ApplicationController
   end
 
 private
-  # 商品投稿時のparams
+  # 商品出品時のparams
   def create_params
     params.require(:item).permit(:name, :text, :category_id, :brand_name, :status, :shipping_charges, :shipping_area, :days_to_ship, :price, photos:[]).merge(saler_id: current_user.id)
   end
