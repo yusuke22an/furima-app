@@ -79,15 +79,15 @@
   .buy-page__footer
     %ul.caution
       %li
-        = link_to("プライバシーポリシー", "https://www.mercari.com/jp/privacy/")
+        = link_to items_path 
       %li
-        = link_to("フリマアプリ利用規約", "https://www.mercari.com/jp/tos/")
+        = link_to items_path 
       %li
-        = link_to("特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/")      
+        = link_to items_path       
       %br
  
     .footer-logo
-      = link_to("https://www.mercari.com/jp/tokutei/") do
+      = link_to items_path do
         = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
 
     %p.footer-inc
