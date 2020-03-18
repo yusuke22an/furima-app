@@ -8,18 +8,22 @@ class ItemsController < ApplicationController
 
   # 商品出品用のアクション
   def new
-    @item = Item.new    
-    @category_parent_array = Category.where(ancestry: nil).each do |parent|
+    if user_signed_in?
+      @item = Item.new    
+      @category_parent_array = Category.where(ancestry: nil)
+    else
+      redirect_to new_user_session_path
     end
+
   end
 
+  # 商品出品時のデータ保存用アクション
   def create
     @item = Item.new(create_params)
     if @item.save
-        redirect_to root_path,notice: "投稿完了しました"
+      redirect_to controller: :users, action: :show, id: current_user.id
     else
-      @category_parent_array = Category.where(ancestry: nil).each do |parent|
-      end
+      @category_parent_array = Category.where(ancestry: nil)
       render :new, notice: "fail"
     end        
   end
@@ -28,6 +32,7 @@ class ItemsController < ApplicationController
   def update
   end
 
+  # 商品出品時のカテゴリー取得に仕様
   def get_category_children
     @category_children = Category.where('ancestry = ?', "#{params[:parent_name]}")
   end
@@ -63,6 +68,7 @@ class ItemsController < ApplicationController
   end
 
 private
+  # 商品投稿時のparams
   def create_params
     params.require(:item).permit(:name, :text, :category_id, :brand_name, :status, :shipping_charges, :shipping_area, :days_to_ship, :price, photos:[]).merge(saler_id: current_user.id)
   end
