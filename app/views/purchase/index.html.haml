@@ -1,20 +1,94 @@
 = render 'layouts/notifications'
 
-%h2 購入を確定しますか？
-%p= @item.name
-%p= (" #{@item.price} 円です")
+.buy-page
+  .buy-page__header
+    .buy-page__header__banner
+      = link_to("https://www.mercari.com/jp/tokutei/") do
+        = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
 
-%br
-%h3 支払い方法
-- if @default_card_information.blank?
-  %br /
-- else
-  -#以下カード情報を表示
-  = "**** **** **** " + @default_card_information.last4
-  - exp_month = @default_card_information.exp_month.to_s
-  - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-  = exp_month + " / " + exp_year
-  -# exp_monthはカードの期限月、exp_yearは期限年、last4はカードの下４桁を取得することを表現している。
-%br
-= form_tag(action: :pay, method: :post) do
-  %button 購入する
+  .buy-page__main
+    .buy-page__main--head
+      購入内容の確認
+    .buy-page__main--inner
+      .buy-page__main--inner__content
+        = form_with model: @items, local: true do |f|
+          .contents
+
+            .buy-item
+              .buy-item__image   
+                = image_tag @item.photos[0].variant(auto_orient: true), class: 'itemBox__body__img'           
+              .buy-item__info
+                .buy-item__info__name 
+                  %br
+                  = @item.name
+                .buy-item__info__price
+                  .buy-item__info__price__buy-price 
+                    = (" #{@item.price} 円です")
+                  .buy-item__info__price__shipping-charge 
+            .buy-price
+              .buy-price--left
+                支払い金額
+              .buy-price--right
+                = (" #{@item.price} 円")
+            .border
+
+            .method-of-payment
+              .method-of-payment__change
+                %p.method 支払い方法
+                %br
+                  クレジットカード
+                - if @default_card_information.blank?
+                  %br /
+                - else
+                  -#以下カード情報を表示
+                  = "**** **** **** " + @default_card_information.last4
+                  - exp_month = @default_card_information.exp_month.to_s
+                  - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                  = exp_month + " / " + exp_year
+                  -# exp_monthはカードの期限月、exp_yearは期限年、last4はカードの下４桁を取得することを表現している。
+                  %p.change
+                    = link_to "変更する", new_card_path(@card)
+                -# .method-of-payment__how-to-pay　一旦コメントアウト
+                -#   クレジットカード
+                -#   %br
+                -#   *********7777
+                -#   %br
+                -#   有効期限 **/**
+                -#   %br
+                -#   %i.fab.fa-cc-mastercard
+
+            .border
+
+            .shipping-info
+              .shipping-info__change
+                %p.method 配送先
+                %p.change
+                  -# = link_to("変更する", "#") 一旦コメントアウト user編集ページへ
+              .shipping-info__confirm
+                = ("〒 #{current_user.zip} ")
+                %br
+                = current_user.prefectures
+                %br
+                = ("#{current_user.delivery_last_name}   #{current_user.delivery_first_name}")
+            .border
+
+            .btn__send
+              = link_to "購入する", pay_item_purchase_index_path(@item), method: :post, class: "submit"
+              
+
+  .buy-page__footer
+    %ul.caution
+      %li
+        = link_to items_path 
+      %li
+        = link_to items_path 
+      %li
+        = link_to items_path       
+      %br
+ 
+    .footer-logo
+      = link_to items_path do
+        = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
+
+    %p.footer-inc
+      %small © TEAM-S, Inc.
