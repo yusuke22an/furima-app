@@ -74,7 +74,6 @@
             .border
 
             .btn__send
-              -# = f.submit '購入する', class: 'submit'
               = link_to "購入する", pay_item_purchase_index_path(@item), method: :post, class: "submit"
               
 
