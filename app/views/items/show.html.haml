@@ -54,10 +54,10 @@
                       = @child if @child.present?
                       %br/
                       = @grand_child if @grand_child.present?
-                  -# %tr    一旦コメントアウトしてます。
-                  -#   %th ブランド
-                  -#   %td
-                  -# %tr
+                  %tr    
+                    %th ブランド
+                    %td= @item.brand_name
+                  -# %tr 一旦コメントアウトしてます。
                   -#   %th 商品のサイズ
                   -#   %td
                   %tr
