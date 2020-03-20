@@ -1,0 +1,25 @@
+.breadcrumbs {
+  display: block;
+  padding: 0 60px;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  font-size: 14px;
+  &__list {
+    height: 30px;
+    margin: 0 auto;
+    max-width: 1040px;
+    line-height: 30px;
+    a {
+      text-decoration: none;
+      color: $FRM-GRN;
+    }
+    .fas {
+      margin: 0 5px 0 5px;
+      color: rgb(200, 200, 200);
+    }
+    .current {
+      font-weight: 600;
+    }
+  }
+}
