@@ -5,6 +5,7 @@ $(function(){
   var file_field = document.querySelector('input[type=file]')
   //fileが選択された時に発火するイベント
   $('#img-file').change(function(){
+    console.log("success")
     //選択したfileのオブジェクトをpropで取得
     var files = $('input[type="file"]').prop('files')[0];
     $.each(this.files, function(i, file){
@@ -17,6 +18,7 @@ $(function(){
       file_field.files = dataBox.files
 
       var num = $('.item-image').length + 1 + i
+      console.log(num)
       fileReader.readAsDataURL(file);
       //画像が5枚になったら超えたらドロップボックスを削除する
       if (num == 5){

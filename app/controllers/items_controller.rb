@@ -56,6 +56,12 @@ class ItemsController < ApplicationController
   
   # 商品情報編集用のアクション
   def edit
+    @grandchild = @item.category
+    @child = @grandchild.parent
+    @parent = @grandchild.parent.parent
+    @category = @item.category
+    @category_children_array = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+    @category_grandchildren_array = Category.where('ancestry = ?', "#{@category.ancestry}")
   end
 
   # 商品情報編集時のデータ保存用アクション

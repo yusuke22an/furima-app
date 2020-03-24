@@ -11,8 +11,8 @@
         = form_with model: @item, local: true do |f|
           - if @item.errors.any?
             %ul
-              - @item.errors.full_messages.each do |message|
-                %li= message
+            - @item.errors.full_messages.each do |message|
+              %li= message
 
           .contents
             .form-group
@@ -20,11 +20,20 @@
               %span.form-require 必須
               %p.pict-caution 最大5枚までアップロードできます
               .image-box-1
-                .item-num-0#image-box__container
-                  = f.file_field :photos, type: 'file',class: 'file-upload', accept: 'image/jpeg,image/gif,image/png', value:"", style: "display:none", id:"img-file" ,multiple: true
-                  %label{for: "img-file"}
-                    %i.fas.fa-camera
+                - if @item.persisted?
+                  - @item.photos.each_with_index do |photo, i|
+                    .item-image
+                      = image_tag photo, width: "114px", height: "114px"
 
+                  #image-box__container{class: "item-num#{@item.photos.length}"}
+                    = f.file_field :photos, type: 'file',class: 'file-upload', accept: 'image/jpeg,image/gif,image/png', value:"", style: "display:none", id:"img-file" ,multiple: true
+                    %label{for: "img-file"}
+                      %i.fas.fa-camera
+                - else
+                  .item-num-0#image-box__container                    
+                    = f.file_field :photos, type: 'file',class: 'file-upload', accept: 'image/jpeg,image/gif,image/png', value:"", style: "display:none", id:"img-file" ,multiple: true
+                    %label{for: "img-file"}
+                      %i.fas.fa-camera
           .contents
             .form-group
               %label(for="name")商品名
@@ -39,12 +48,27 @@
           .contents
             .contents-info 商品の詳細
             .form-group
-              .listing-product-detail__category
-                %label(for="category")カテゴリー
-                %span.form-require 必須
-                .listing-select-wrapper
-                  .listing-select-wrapper__box
-                    = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: ""}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+              - if @item.persisted?
+                .listing-product-detail__category
+                  %label(for="category")カテゴリー
+                  %span.form-require 必須
+                  .listing-select-wrapper
+                    .listing-select-wrapper__box
+                      = f.select :category_id, options_for_select(@category_parent_array.map{|c|[c[:name],c[:id]]},@parent.id),{include_blank: true},{class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  .listing-select-wrapper__added{id: "children_wrapper"}
+                    .listing-select-wrapper__box
+                      = f.select :category_id, options_for_select(@category_children_array.map{|c|[c[:name],c[:id]]},@child.id),{include_blank: true},{class: 'listing-select-wrapper__box--select', id: 'child_category'}
+                  .listing-select-wrapper__added{id: "grandchildren_wrapper"}
+                    .listing-select-wrapper__box
+                      = f.select :category_id, options_for_select(@category_grandchildren_array.map{|c|[c[:name],c[:id]]},@grandchild.id),{include_blank: true},{class: 'listing-select-wrapper__box--select', id: 'grandchild_category'}
+              - else
+                .listing-product-detail__category
+                  %label(for="category")カテゴリー
+                  %span.form-require 必須
+                  .listing-select-wrapper
+                    .listing-select-wrapper__box
+                      = f.select :category_id, options_for_select(@category_parent_array.map{|c|[c[:name],c[:id]]}),{include_blank: true},{class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+
             .form-group
               %label(for="brand_name")ブランド名
               %span.form-any 任意
