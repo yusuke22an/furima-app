@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to controller: :users, action: :show, id: current_user.id
     else
-      render :new, notice: "fail"
+      render action: :new, notice: "fail"
     end        
   end
 

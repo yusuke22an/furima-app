@@ -1,16 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'users/registrations'
-  }
+  devise_for :users
   resources :users, only: :show
   resources :items do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
-    get 'buy_item', to: :update, controller: 'items'
     resources :purchase, only: [:index] do
       collection do
         post 'pay', to: 'purchase#pay'
