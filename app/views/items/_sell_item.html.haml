@@ -1,7 +1,7 @@
 .sell-page
   .sell-page__header
     .sell-page__header__banner
-      = link_to("https://www.mercari.com/jp/tokutei/") do
+      = link_to root_path do
         = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
   .sell-page__main
     .sell-page__main--head
@@ -146,21 +146,22 @@
 
               .btn__send
                 = f.submit '登録・送信', class: 'submit'
-                .btn__redirect もどる
-
+                .btn__redirect
+                  = link_to("もどる", root_path)
+                  -# 直前のページに戻るようにしたい
 
   .sell-page__footer
     %ul.caution
       %li
-        = link_to("プライバシーポリシー", "https://www.mercari.com/jp/privacy/")
+        = link_to("プライバシーポリシー", "#")
       %li
-        = link_to("フリマアプリ利用規約", "https://www.mercari.com/jp/tos/")
+        = link_to("フリマアプリ利用規約", "#")
       %li
-        = link_to("特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/")      
+        = link_to("特定商取引に関する表記", "#")      
       %br
  
     .footer-logo
-      = link_to("https://www.mercari.com/jp/tokutei/") do
+      = link_to root_path do
         = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
 
     %p.footer-inc
