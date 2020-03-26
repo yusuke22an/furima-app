@@ -271,13 +271,15 @@
               .btn__redirect{
                 background: #aaa;
                 border: 1px solid #aaa;
-                color: #fff;
                 width: 45%;
                 line-height: 48px;
                 font-size: 14px;
                 text-align: center;
-                text-decoration: none;
                 margin: 24px auto 0;
+                a{
+                  text-decoration: none;
+                  color: #fff;
+                }
               }
             }  
       }
