@@ -28,6 +28,7 @@
 - has_many :buyed_items, foreign_key: "buyer_id", class_name: "Item"
 - has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Item"
 - has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
+- has_many :liked_items, through: :likes, source: :item
 
 ## cardsテーブル
 |Column|Type|Options|Meaning|attention|
@@ -60,6 +61,7 @@
 - belongs_to :category
 - belongs_to :saler
 - belongs_to :buyer
+- has_many :liked_users, through: :likes, source: :user
 
 
 ## photosテーブル
@@ -87,3 +89,12 @@
 
 ### Association
 - has_many :items
+
+## likeテーブル
+|Column|Type|Options|Meaning|attention|
+|item_id|integer|foreign_key: true|Itemとの外部キー||
+|user_id|integer|foreign_key: true|Userとの外部キー||
+
+## Association
+- belongs_to :item
+- belongs_to :user
