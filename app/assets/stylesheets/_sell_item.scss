@@ -81,6 +81,9 @@
                 .item-image__operetion--delete{
                   color: #0099e8; 
                   cursor: default;
+                  &__box{
+                    display: none;
+                  }
                 }
                 .item-num-0{
                   width: 100%;

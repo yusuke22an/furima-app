@@ -5,7 +5,6 @@ $(function(){
   var file_field = document.querySelector('input[type=file]')
   //fileが選択された時に発火するイベント
   $('#img-file').change(function(){
-    console.log("success")
     //選択したfileのオブジェクトをpropで取得
     var files = $('input[type="file"]').prop('files')[0];
     $.each(this.files, function(i, file){
@@ -18,7 +17,6 @@ $(function(){
       file_field.files = dataBox.files
 
       var num = $('.item-image').length + 1 + i
-      console.log(num)
       fileReader.readAsDataURL(file);
       //画像が5枚になったら超えたらドロップボックスを削除する
       if (num == 5){
@@ -50,6 +48,9 @@ $(function(){
     var target_image = $(this).parent().parent()
     //削除を押されたプレビューimageのfile名を取得
     var target_name = $(target_image).data('image')
+    //削除したいデータのIDを取得
+    var id = $(this).attr('img id')
+    console.log(id)
     //プレビューがひとつだけの場合、file_fieldをクリア
     if(file_field.files.length==1){
       //inputタグに入ったファイルを削除
