@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'users/registrations'
-  }
-  resources :users, only: :show
-
+  devise_for :users
+  resources :users, only: :show 
   resources :items do
     get 'buy_item', to: :update, controller: 'items'
     get :like, on: :member
