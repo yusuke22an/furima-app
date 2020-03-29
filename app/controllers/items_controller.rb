@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_category_parent_array, only: [:new, :create, :edit, :update]
-  before_action :delete_photo_ids,only: [:update] 
+  before_action :delete_photos,only: [:update] 
   # 商品一覧表示(トップページ)用のアクション
   def index
     @categories = Category.all
@@ -94,13 +94,16 @@ private
     @category_parent_array = Category.where(ancestry: nil)
   end
 
-  # def delete_photo_ids
-  #   params[:item][:photo_ids].each do |photo_ids|
-  #     photo = @item.photos.find(photo_id)
-  #     photo.purge
-  #     binding.pry
-  #   end
-  # end
+  def delete_photos
+    delete_photos = params[:item][:delete_photo_ids]
+    if delete_photos != nil
+      delete_photos.each do |photo_ids|
+        delete_photo = @item.photos.find(photo_ids)
+        delete_photo.purge
+      end
+    end
+  end
+
 end
 
 

@@ -74,6 +74,9 @@
                 text-align: center;
                 align-items: center;
                 justify-content: space-around;
+                .item-image__delete__box{
+                  // display: none;
+                }
                 .item-image{
                   border: 1px solid #888;
                   background-color: #fff;
@@ -81,9 +84,6 @@
                 .item-image__operetion--delete{
                   color: #0099e8; 
                   cursor: default;
-                  &__box{
-                    display: none;
-                  }
                 }
                 .item-num-0{
                   width: 100%;

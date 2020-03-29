@@ -48,15 +48,11 @@ $(function(){
     var target_image = $(this).parent().parent()
     //削除を押されたプレビューimageのfile名を取得
     var target_name = $(target_image).data('image')
-    //削除したいデータのIDを取得
-    var id = $(this).attr('img id')
-    console.log(id)
     //プレビューがひとつだけの場合、file_fieldをクリア
     if(file_field.files.length==1){
       //inputタグに入ったファイルを削除
       $('input[type=file]').val(null)
       dataBox.clearData();
-      console.log(dataBox)
     }else{
       //プレビューが複数の場合
       $.each(file_field.files, function(i,input){
