@@ -3,16 +3,12 @@ class LikesController < ApplicationController
   
   def create
     @like = Like.new(user_id: current_user.id, item_id: params[:item_id])
-    if @like.save
-    else
-    end
+    flash.now[:alert] = "いいね!登録エラー" unless @like.save
   end
 
   def destroy
     @like = Like.find_by(item_id: params[:item_id], user_id: current_user.id)
-    if @like.destroy
-    else
-    end
+    flash.now[:alert] = "いいね!削除エラー" unless @like.destroy
   end
 
   def set_item
