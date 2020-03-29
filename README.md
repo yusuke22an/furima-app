@@ -92,8 +92,8 @@
 
 ## likeテーブル
 |Column|Type|Options|Meaning|attention|
-|item_id|integer|foreign_key: true|Itemとの外部キー||
-|user_id|integer|foreign_key: true|Userとの外部キー||
+|item_id|references|foreign_key: true|Itemとの外部キー||
+|user_id|references|foreign_key: true|Userとの外部キー||
 
 ## Association
 - belongs_to :item
