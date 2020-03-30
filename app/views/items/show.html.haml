@@ -17,45 +17,42 @@
               = ("#{@item.price} 円")
             .itemBox__price-detail
               %span
-                = ("#{@item.price} 円")
-              .itemBox__price-detail
-                %span
-                  (税込)
-            .itemDetail 
-            .table
-              %table
-                %tbody
-                  %tr
-                    %th 出品者
-                    %td
-                      = @item.saler.nickname
-                  %tr
-                    %th カテゴリー
-                    %td
-                      = @parent
-                      %br/
-                      = @child if @child.present?
-                      %br/
-                      = @grand_child if @grand_child.present?
-                  %tr    
-                    %th ブランド
-                    %td= @item.brand_name
-                  -# %tr 一旦コメントアウトしてます。
-                  -#   %th 商品のサイズ
-                  -#   %td
-                  %tr
-                    %th 商品の状態
-                    %td= @item.status
-                  %tr
-                    %th 配送料の負担
-                    %td= @item.shipping_charges
-                  %tr
-                    %th 発送元の地域
-                    %td
-                      = @item.shipping_area
-                  %tr
-                    %th 発送日の目安
-                    %td= @item.days_to_ship
+                (税込)
+          .itemDetail 
+          .table
+            %table
+              %tbody
+                %tr
+                  %th 出品者
+                  %td
+                    = @item.saler.nickname
+                %tr
+                  %th カテゴリー
+                  %td
+                    = @parent
+                    %br/
+                    = @child if @child.present?
+                    %br/
+                    = @grand_child if @grand_child.present?
+                -# %tr    一旦コメントアウトしてます。
+                -#   %th ブランド
+                -#   %td
+                -# %tr
+                -#   %th 商品のサイズ
+                -#   %td
+                %tr
+                  %th 商品の状態
+                  %td= @item.status
+                %tr
+                  %th 配送料の負担
+                  %td= @item.shipping_charges
+                %tr
+                  %th 発送元の地域
+                  %td
+                    = @item.shipping_area
+                %tr
+                  %th 発送日の目安
+                  %td= @item.days_to_ship
 
           .liked_or_unlike
             = render "likes/like"
