@@ -11,3 +11,8 @@ crumb :itemshow do |item|
   link "#{item.name}", item_path
   parent :root
 end
+
+crumb :itemslike do
+  link "いいね! 一覧", like_item_path
+  parent :mypage
+end
