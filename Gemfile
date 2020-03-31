@@ -87,7 +87,6 @@ gem "nokogiri", ">= 1.10.8"
 
 gem 'payjp'
 gem 'kaminari'
-
 gem 'gretel'
 
 gem 'omniauth-facebook'
