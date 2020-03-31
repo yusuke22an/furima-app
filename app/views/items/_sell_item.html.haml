@@ -23,14 +23,14 @@
                 - if @item.persisted?
                   - @item.photos.each_with_index do |photo, i|
                     .item-image__delete__box
-                      = f.check_box :delete_photo_ids, {:multiple => true},photo.id, false
+                      = f.check_box :delete_photo_ids, {class: "deletecheck",:multiple => true},photo.id, false
                     .item-image
                       .item-image__content
                         .item-image__content--icon
                           = image_tag photo.variant(resize:"114x114"),id: photo.id
                         .item-image__operetion--delete
-                          %span 削除
-
+                          %span{value:photo.id ,class: "deleteid_button"} 削除
+                          
                   #image-box__container{class: "item-num#{@item.photos.length}"}
                     = f.file_field :photos, type: 'file',class: 'file-upload', accept: 'image/jpeg,image/gif,image/png', value:"", style: "display:none", id:"img-file" ,multiple: true
                     %label{for: "img-file"}
