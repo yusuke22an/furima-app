@@ -51,27 +51,4 @@
             = image_tag '/logo.png', class: "mypage__container__right__transaction__nil__image"
             .mypage__container__right__transaction__nil__text
               過去に購入した商品がありません
-    .mypage__container__left
-      .mypage__container__left__nav
-        %ul.mypage__container__left__nav__list
-          %li.mypage__container__left__nav__list__item--active
-            = link_to user_path(current_user), class: "mypage__container__left__nav__list__item__a" do
-              マイページ
-            = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
-          %li.mypage__container__left__nav__list__item
-            = link_to new_item_path(current_user), class: "mypage__container__left__nav__list__item__a" do
-              出品する
-            = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
-          %li.mypage__container__left__nav__list__item
-            = link_to new_card_path(@card), class: "mypage__container__left__nav__list__item__a" do
-              クレジットカードの登録
-
-            = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
-          %li.mypage__container__left__nav__list__item
-            = link_to "#", class: "mypage__container__left__nav__list__item__a" do
-              登録情報編集
-            = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
-          %li.mypage__container__left__nav__list__item
-            = link_to destroy_user_session_path, method: :delete, class: "mypage__container__left__nav__list__item__a" do
-              サインアウト
-            = icon 'fas', 'fas fa-chevron-right', class: "mypage__container__left__nav__list__item__arrow"
+    = render "layouts/left_container"
