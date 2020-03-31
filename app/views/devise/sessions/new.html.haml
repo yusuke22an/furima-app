@@ -11,6 +11,8 @@
           %p.new-account 新規会員登録
         = link_to user_facebook_omniauth_authorize_path, method: :post do
           %p.new-account Facebookで登録
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
+          %p.new-account_google Googleで登録
 
       .sign_in-page__main--inner__content
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|

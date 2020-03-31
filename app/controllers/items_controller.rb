@@ -20,11 +20,11 @@ class ItemsController < ApplicationController
   # 商品出品時のデータ保存用アクション
   def create
     @item = Item.new(create_params)
-    if @item.save
+    @item.save
       redirect_to controller: :users, action: :show, id: current_user.id
-    else
-      render :new, notice: "fail"
-    end        
+    # else
+      # render :new, notice: "fail"
+    # end        
   end
 
   # 商品出品時のカテゴリー取得に使用
