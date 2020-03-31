@@ -1,0 +1,142 @@
+.mypage {
+  width: 1020px;
+  margin: 0 auto 0 auto;
+  padding: 40px 0 0 0;
+  background-color: rgb(245, 245, 245);
+  &__container {
+    padding: 0 0 40px 0;
+    display: flex;
+    flex-direction: row-reverse;
+    &__right {
+      width: 700px;
+      margin: 0 40px 0 0;
+      &__user {
+        height: 200px;
+        padding: 20px 20px 20px 20px;
+        background-color: rgba(60, 202, 206, 0.5);
+        text-align: center;
+        &__icon {
+          display: block;
+          margin: 25px auto 0 auto;
+          color: rgb(51, 51, 51);
+          text-decoration: none;
+          width: 60px;
+          height: 60px;
+        }
+        &__name {
+          margin: 8px 0 0 0;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 1.4;
+        }
+        &__exhibitions {
+          margin: 8px 0 0 0;
+          &__number {
+            display: inline-block;
+            font-size: 14px;
+          }
+        }
+      }
+      &__transaction {
+        margin: 40px 0 0 0;
+        color: rgb(51, 51, 51);
+        &__title {
+          font-weight: 600;
+          padding: 0 16px 0 16px;
+          background-color: rgb(250, 250, 250);
+          font-size: 16px;
+          line-height: 72px;
+          border-bottom: 2px solid rgb(60, 202, 206);
+        }
+        &__present {
+          background-color: $BACK-WHT;
+          &__items {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 24px 24px 8px 24px;
+            &__item {
+              width: 180px;
+              &__picture {
+                width: 180px;
+                height: 180px;
+                object-fit: cover;
+                vertical-align: bottom;
+              }
+              &__list {
+                background-color: $BACK-WHT;
+                color: rgb(51, 51, 51);
+                padding: 16px;
+                &__name {
+                  overflow: hidden;
+                  line-height: 1.5;
+                  font-size: 16px;
+                  text-align: left;
+                }
+                &__price {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+
+
+
+
+
+
+
+        }
+        &__nil {
+          background-color: $BACK-WHT;
+          margin: 0 0 10px 0;
+          &__image {
+            display: block;
+            margin: 0 auto;
+            padding: 100px 0 0 0;
+          }
+          &__text {
+            padding: 60px 0 60px 0;
+            text-align: center;
+          }
+        }
+      }
+    }
+    &__left {
+      width: 280px;
+      margin: 0 40px 0 0;
+      &__nav {
+        &__list {
+          list-style: none;
+          &__item {
+            background-color: rgb(255, 255, 255);
+            display: block;
+            min-height: 48px;
+            padding: 16px;
+            font-size: 14px;
+            display: flex;
+            border-bottom: 1px solid rgb(245, 245, 245);
+            &__a {
+              text-decoration: none;
+              color: rgb(51, 51, 51);
+            }
+            &__arrow {
+              margin: 0 0 0 auto;
+              color: rgb(220, 220, 220);
+            }
+            &--active {
+              background-color: rgb(255, 255, 255);
+              display: block;
+              min-height: 48px;
+              padding: 16px;
+              font-size: 14px;
+              display: flex;
+              border-bottom: 1px solid rgb(245, 245, 245);
+              background-color: rgb(238, 238, 238);
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+}
