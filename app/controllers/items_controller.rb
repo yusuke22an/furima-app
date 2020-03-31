@@ -52,6 +52,7 @@ class ItemsController < ApplicationController
       @child = @item.category.parent.name
       @grand_child = @item.category.name
     end
+    @like = Like.new
   end
   
   # 商品情報編集用のアクション
@@ -71,6 +72,11 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to user_path(current_user), notice: "商品名「#{@item.name}」を削除しました。"
+  end
+
+  def like
+    @categories = Category.all
+    @items = Item.joins(:likes).order(created_at: :desc).page(params[:page]).per(10)
   end
 
 private

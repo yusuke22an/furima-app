@@ -4,6 +4,9 @@ class Item < ApplicationRecord
   belongs_to :buyer, class_name: "User", optional: true
   has_many_attached :photos
 
+  has_many :likes
+  has_many :liked_users, through: :likes, source: :user
+
   validates :photos, presence: true,length:{ minimum: 1} 
 
   validates :name, presence: true
