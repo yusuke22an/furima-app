@@ -30,7 +30,6 @@
                           = image_tag photo.variant(resize:"114x114"),id: photo.id
                         .item-image__operetion--delete
                           %span{value:photo.id ,class: "deleteid_button"} 削除
-                          
                   #image-box__container{class: "item-num#{@item.photos.length}"}
                     = f.file_field :photos, type: 'file',class: 'file-upload', accept: 'image/jpeg,image/gif,image/png', value:"", style: "display:none", id:"img-file" ,multiple: true
                     %label{for: "img-file"}
@@ -91,7 +90,7 @@
             .contents-info
               .caution 配送について
               .form-question
-                = link_to("?","/jp/help_center/article/68/")
+                = link_to("?","#")
             .form-group
               %label(for="shipping_charges")配送料の負担
               %span.form-require 必須
@@ -117,7 +116,7 @@
             .contents-info
               .caution 販売価格（300〜9,999,999）
               .form-question
-                = link_to("?","/jp/help_center/article/64/")
+                = link_to("?","#")
             .form-group
               .form-group__price
                 .form-group__price--left
@@ -130,24 +129,23 @@
           .contents
             .form-group
               .submit-caution
-                = link_to("禁止されている出品", "/jp/help_center/getting_started/prohibited_items/")
+                = link_to("禁止されている出品", "#")
                 、
-                = link_to("行為", "/jp/help_center/getting_started/prohibited_conduct/")
+                = link_to("行為", "#")
                 を必ずご確認ください。
                 %br
                 またブランド品でシリアルナンバー等がある場合はご記載ください。
-                = link_to("偽ブランドの販売", "/jp/help_center/getting_started/counterfeit_goods/")
+                = link_to("偽ブランドの販売", "#")
                 は犯罪であり処罰される可能性があります。
                 %br
                 また、出品をもちまして
-                = link_to("加盟店規約", "/jp/seller_terms/")
+                = link_to("加盟店規約", "#")
                 に同意したことになります。
 
               .btn__send
                 = f.submit '登録・送信', class: 'submit'
                 .btn__redirect
-                  = link_to("もどる", root_path)
-                  -# 直前のページに戻るようにしたい
+                  = link_to("もどる", user_path)
 
   .sell-page__footer
     %ul.caution

@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_category_parent_array, only: [:new, :create, :edit, :update]
   before_action :delete_photos,only: [:update] 
+  before_action :authenticate_user!, only: [:new,:create,:edit,:update]
   # 商品一覧表示(トップページ)用のアクション
   def index
     @categories = Category.all
@@ -10,11 +11,7 @@ class ItemsController < ApplicationController
 
   # 商品出品用のアクション
   def new
-    if user_signed_in?
-      @item = Item.new
-    else
-      redirect_to new_user_session_path
-    end
+    @item = Item.new
   end
 
   # 商品出品時のデータ保存用アクション
@@ -69,7 +66,7 @@ class ItemsController < ApplicationController
     if @item.update(create_params)
       redirect_to item_path(@item), notice: "商品名「#{@item.name}」の情報を更新しました。"
     else
-      render :edit, notice: "fail"
+      redirect_to edit_item_path
     end
   end
 
