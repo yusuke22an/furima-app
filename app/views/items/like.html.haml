@@ -1,0 +1,22 @@
+= render "layouts/header"
+- breadcrumb :itemslike
+= render "layouts/breadcrumbs"
+
+.like_items
+  .like_items__container
+    .like_items__container__right
+      .like_items__container__right__title
+        いいね!一覧
+      .like_items__container__right__lists
+        - @items.each do |item|
+          = link_to item_path(item), class: "like_items__container__right__lists__list" do
+            = image_tag item.photos[0].variant(auto_orient: true), class: "like_items__container__right__lists__list__img"
+            .like_items__container__right__lists__list__texts
+              .like_items__container__right__lists__list__texts__name
+                = item.name
+              .like_items__container__right__lists__list__texts__price
+                = "#{item.price}円"
+            = icon 'fas', 'fas fa-chevron-right', class: "like_items__container__right__lists__list__arrow"
+      = paginate(@items)
+    = render "layouts/left_container"
+= render "layouts/footer"

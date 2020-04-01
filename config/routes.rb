@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
+  }
   resources :users, only: :show
   resources :items do
+    get :like, on: :member
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
@@ -13,6 +17,7 @@ Rails.application.routes.draw do
         get 'done', to: 'purchase#done'
       end
     end
+    resources :likes, only: [:create, :destroy]
   end
   resources :items, only: [:edit, :update] do
     get 'get_category_children', defaults: { format: 'json' }
