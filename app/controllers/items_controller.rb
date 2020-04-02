@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_category_parent_array, only: [:new, :create, :edit, :update]
-
+  before_action :delete_photos,only: [:update] 
+  before_action :authenticate_user!, only: [:new,:create,:edit,:update]
   # 商品一覧表示(トップページ)用のアクション
   def index
     @categories = Category.all
@@ -10,11 +11,7 @@ class ItemsController < ApplicationController
 
   # 商品出品用のアクション
   def new
-    if user_signed_in?
-      @item = Item.new
-    else
-      redirect_to new_user_session_path
-    end
+    @item = Item.new
   end
 
   # 商品出品時のデータ保存用アクション
@@ -23,7 +20,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to controller: :users, action: :show, id: current_user.id
     else
-      render :new, notice: "fail"
+      render action: :new, notice: "fail"
     end        
   end
 
@@ -57,6 +54,12 @@ class ItemsController < ApplicationController
   
   # 商品情報編集用のアクション
   def edit
+    @grandchild = @item.category
+    @child = @grandchild.parent
+    @parent = @grandchild.parent.parent
+    @category = @item.category
+    @category_children_array = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+    @category_grandchildren_array = Category.where('ancestry = ?', "#{@category.ancestry}")
   end
 
   # 商品情報編集時のデータ保存用アクション
@@ -64,7 +67,7 @@ class ItemsController < ApplicationController
     if @item.update(create_params)
       redirect_to item_path(@item), notice: "商品名「#{@item.name}」の情報を更新しました。"
     else
-      render :edit, notice: "fail"
+      redirect_to edit_item_path
     end
   end
 
@@ -93,6 +96,17 @@ private
   def set_category_parent_array
     @category_parent_array = Category.where(ancestry: nil)
   end
+
+  def delete_photos
+    delete_photos = params[:item][:delete_photo_ids]
+    if delete_photos != nil
+      delete_photos.each do |photo_ids|
+        delete_photo = @item.photos.find(photo_ids)
+        delete_photo.purge
+      end
+    end
+  end
+
 end
 
 

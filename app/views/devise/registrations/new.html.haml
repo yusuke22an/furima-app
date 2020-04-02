@@ -27,7 +27,7 @@
             %label(for="password")パスワード
             %span.form-require 必須
             .form-password
-              = f.text_field :password, class: 'input-default', placeholder: "7文字以上の半角英数字"
+              = f.password_field :password, class: 'input-default', placeholder: "7文字以上の半角英数字"
 
               -# メールアドレスが入力されていない場合、注意喚起が必要
             .password-info

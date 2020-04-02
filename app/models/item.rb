@@ -8,7 +8,6 @@ class Item < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
 
   validates :photos, presence: true,length:{ minimum: 1} 
-
   validates :name, presence: true
   validates :text, presence: true, length:{ maximum: 1000}
   validates :status, presence: true

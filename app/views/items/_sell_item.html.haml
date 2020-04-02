@@ -1,7 +1,7 @@
 .sell-page
   .sell-page__header
     .sell-page__header__banner
-      = link_to("https://www.mercari.com/jp/tokutei/") do
+      = link_to root_path do
         = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
   .sell-page__main
     .sell-page__main--head
@@ -11,8 +11,8 @@
         = form_with model: @item, local: true do |f|
           - if @item.errors.any?
             %ul
-              - @item.errors.full_messages.each do |message|
-                %li= message
+            - @item.errors.full_messages.each do |message|
+              %li= message
 
           .contents
             .form-group
@@ -20,11 +20,25 @@
               %span.form-require 必須
               %p.pict-caution 最大5枚までアップロードできます
               .image-box-1
-                .item-num-0#image-box__container
-                  = f.file_field :photos, type: 'file',class: 'file-upload', accept: 'image/jpeg,image/gif,image/png', value:"", style: "display:none", id:"img-file" ,multiple: true
-                  %label{for: "img-file"}
-                    %i.fas.fa-camera
-
+                - if @item.persisted?
+                  - @item.photos.each_with_index do |photo, i|
+                    .item-image__delete__box
+                      = f.check_box :delete_photo_ids, {class: "deletecheck",:multiple => true},photo.id, false
+                    .item-image
+                      .item-image__content
+                        .item-image__content--icon
+                          = image_tag photo.variant(resize:"114x114"),id: photo.id
+                        .item-image__operetion--delete
+                          %span{value:photo.id ,class: "deleteid_button"} 削除
+                  #image-box__container{class: "item-num#{@item.photos.length}"}
+                    = f.file_field :photos, type: 'file',class: 'file-upload', accept: 'image/jpeg,image/gif,image/png', value:"", style: "display:none", id:"img-file" ,multiple: true
+                    %label{for: "img-file"}
+                      %i.fas.fa-camera
+                - else
+                  .item-num-0#image-box__container                    
+                    = f.file_field :photos, type: 'file',class: 'file-upload', accept: 'image/jpeg,image/gif,image/png', value:"", style: "display:none", id:"img-file" ,multiple: true
+                    %label{for: "img-file"}
+                      %i.fas.fa-camera
           .contents
             .form-group
               %label(for="name")商品名
@@ -39,12 +53,27 @@
           .contents
             .contents-info 商品の詳細
             .form-group
-              .listing-product-detail__category
-                %label(for="category")カテゴリー
-                %span.form-require 必須
-                .listing-select-wrapper
-                  .listing-select-wrapper__box
-                    = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: ""}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+              - if @item.persisted?
+                .listing-product-detail__category
+                  %label(for="category")カテゴリー
+                  %span.form-require 必須
+                  .listing-select-wrapper
+                    .listing-select-wrapper__box
+                      = f.select :category_id, options_for_select(@category_parent_array.map{|c|[c[:name],c[:id]]},@parent.id),{include_blank: true},{class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  .listing-select-wrapper__added{id: "children_wrapper"}
+                    .listing-select-wrapper__box
+                      = f.select :category_id, options_for_select(@category_children_array.map{|c|[c[:name],c[:id]]},@child.id),{include_blank: true},{class: 'listing-select-wrapper__box--select', id: 'child_category'}
+                  .listing-select-wrapper__added{id: "grandchildren_wrapper"}
+                    .listing-select-wrapper__box
+                      = f.select :category_id, options_for_select(@category_grandchildren_array.map{|c|[c[:name],c[:id]]},@grandchild.id),{include_blank: true},{class: 'listing-select-wrapper__box--select', id: 'grandchild_category'}
+              - else
+                .listing-product-detail__category
+                  %label(for="category")カテゴリー
+                  %span.form-require 必須
+                  .listing-select-wrapper
+                    .listing-select-wrapper__box
+                      = f.select :category_id, options_for_select(@category_parent_array.map{|c|[c[:name],c[:id]]}),{include_blank: true},{class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+
             .form-group
               %label(for="brand_name")ブランド名
               %span.form-any 任意
@@ -61,7 +90,7 @@
             .contents-info
               .caution 配送について
               .form-question
-                = link_to("?","/jp/help_center/article/68/")
+                = link_to("?","#")
             .form-group
               %label(for="shipping_charges")配送料の負担
               %span.form-require 必須
@@ -87,7 +116,7 @@
             .contents-info
               .caution 販売価格（300〜9,999,999）
               .form-question
-                = link_to("?","/jp/help_center/article/64/")
+                = link_to("?","#")
             .form-group
               .form-group__price
                 .form-group__price--left
@@ -100,36 +129,36 @@
           .contents
             .form-group
               .submit-caution
-                = link_to("禁止されている出品", "/jp/help_center/getting_started/prohibited_items/")
+                = link_to("禁止されている出品", "#")
                 、
-                = link_to("行為", "/jp/help_center/getting_started/prohibited_conduct/")
+                = link_to("行為", "#")
                 を必ずご確認ください。
                 %br
                 またブランド品でシリアルナンバー等がある場合はご記載ください。
-                = link_to("偽ブランドの販売", "/jp/help_center/getting_started/counterfeit_goods/")
+                = link_to("偽ブランドの販売", "#")
                 は犯罪であり処罰される可能性があります。
                 %br
                 また、出品をもちまして
-                = link_to("加盟店規約", "/jp/seller_terms/")
+                = link_to("加盟店規約", "#")
                 に同意したことになります。
 
               .btn__send
                 = f.submit '登録・送信', class: 'submit'
-                .btn__redirect もどる
-
+                .btn__redirect
+                  = link_to("もどる", root_path)
 
   .sell-page__footer
     %ul.caution
       %li
-        = link_to("プライバシーポリシー", "https://www.mercari.com/jp/privacy/")
+        = link_to("プライバシーポリシー", "#")
       %li
-        = link_to("フリマアプリ利用規約", "https://www.mercari.com/jp/tos/")
+        = link_to("フリマアプリ利用規約", "#")
       %li
-        = link_to("特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/")      
+        = link_to("特定商取引に関する表記", "#")      
       %br
  
     .footer-logo
-      = link_to("https://www.mercari.com/jp/tokutei/") do
+      = link_to root_path do
         = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
 
     %p.footer-inc

@@ -20,22 +20,20 @@ $(function(){
       fileReader.readAsDataURL(file);
       //画像が5枚になったら超えたらドロップボックスを削除する
       if (num == 5){
-        $('#image-box__container').css('display', 'none')   
+        $('#image-box__container').css('display', 'none') 
       }
       //読み込みが完了すると、srcにfileのURLを格納
       fileReader.onloadend = function() {
         var src = fileReader.result
         var html= `<div class='item-image' data-image="${file.name}">
-                    <div class=' item-image__content'>
+                    <div class=' item-image__content'> 
                       <div class='item-image__content--icon'>
                         <img src=${src} width="114" height="114" >
                       </div>
-                    </div>
-                    <div class='item-image__operetion'>
-                      <div class='item-image__operetion--delete'>削除</div>
+                    <div class='item-image__operetion--delete'>
+                      <span class='deleteid_button'>削除</span>
                     </div>
                   </div>`
-        //image_box__container要素の前にhtmlを差し込む
         $('#image-box__container').before(html);
       };
       //image-box__containerのクラスを変更し、CSSでドロップボックスの大きさを変えてやる。
@@ -48,12 +46,21 @@ $(function(){
     var target_image = $(this).parent().parent()
     //削除を押されたプレビューimageのfile名を取得
     var target_name = $(target_image).data('image')
+    //削除を押されたプレビューと同じIDを持つcheck-boxのONにする
+
+      // 削除ボタンに付与されているidを取得
+      var id = $(this).children().attr('value');
+      // 同じidをもっているチェックボックスを指定する
+      var checkbox = $(`input[value="${id}"].deletecheck`);
+      // それが存在していたらチェックをいれる
+      if(checkbox) checkbox.prop('checked',true)
+      // 課題①削除ボタンidと同じチェックボックidにチェックいれる
+
     //プレビューがひとつだけの場合、file_fieldをクリア
     if(file_field.files.length==1){
       //inputタグに入ったファイルを削除
       $('input[type=file]').val(null)
       dataBox.clearData();
-      console.log(dataBox)
     }else{
       //プレビューが複数の場合
       $.each(file_field.files, function(i,input){
