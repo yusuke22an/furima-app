@@ -1,0 +1,33 @@
+ja:
+  activerecord:
+    attributes:
+      item:
+        photos: 出品画像
+        name: 商品名
+        text: 商品の説明
+        status: 商品の状態
+        category_id: カテゴリー
+        shipping_charges: 配送料の負担
+        shipping_area: 発送元の地域
+        days_to_ship: 発送までの日数
+        price: 価格
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        last_name: 姓
+        last_name_furigana: 姓（カナ）
+        first_name: 名
+        first_name_furigana: 名（カナ） 
+        year_of_birth: 生年月日（年）
+        month_of_birth: 生年月日（月）
+        day_of_birth: 生年月日（日）
+        delivery_last_name: 姓（発送元）
+        delivery_first_name: 名（発送元）
+        zip: 郵便番号
+        prefectures: 都道府県
+        municipality: 市区町村
+        address: 住所詳細
+        building_name: 建物名
+        phone_number: 電話番号
