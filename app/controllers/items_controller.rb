@@ -67,8 +67,7 @@ class ItemsController < ApplicationController
     if @item.update(create_params)
       redirect_to item_path(@item), notice: "商品名「#{@item.name}」の情報を更新しました。"
     else
-      redirect_to edit_item_path
-      # renderで表示できるよう修正予定
+      redirect_to edit_item_path, notice: "商品名「#{@item.name}」の情報を不足いています。"
     end
   end
 
