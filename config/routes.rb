@@ -19,10 +19,6 @@ Rails.application.routes.draw do
     end
     resources :likes, only: [:create, :destroy]
   end
-  resources :items, only: [:edit, :update] do
-    get 'get_category_children', defaults: { format: 'json' }
-    get 'get_category_grandchildren', defaults: { format: 'json' }
-  end
   resources :comments
   root 'items#index'
 

@@ -9,7 +9,7 @@ $(function(){
     var childSelectHtml = '';
     childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" id="child_category">
+                          <select class="listing-select-wrapper__box--select" id="child_category" name="item[category_id]">
                             <option value=""></option>
                             ${insertHTML}
                           <select>                          
@@ -39,7 +39,7 @@ $(function(){
       $('#grandchildren_wrapper').remove();
     } else {
       $.ajax({
-        url: 'get_category_children',
+        url: '/items/get_category_children',
         type: 'GET',
         data: ('parent_name=' + parentCategory),
         dataType: 'json'
@@ -66,7 +66,7 @@ $(function(){
       $('#grandchildren_wrapper').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
     }else{
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: '/items/get_category_grandchildren',
         type: 'GET',
         data: ('child_id=' + childId),
         dataType: 'json'
