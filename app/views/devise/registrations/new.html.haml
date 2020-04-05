@@ -21,7 +21,6 @@
             %span.form-require 必須
             .form-email
               = f.email_field :email, class: 'input-default has-error', placeholder: "PC・携帯どちらでも可"
-              -# メールアドレスが入力されていない場合、注意喚起が必要
 
           .form-group
             %label(for="password")パスワード
@@ -29,13 +28,10 @@
             .form-password
               = f.password_field :password, class: 'input-default', placeholder: "7文字以上の半角英数字"
 
-              -# メールアドレスが入力されていない場合、注意喚起が必要
             .password-info
               ※ 英字と数字の両方を含めて設定してください
             .form-password-revelation
               .check-box
-                -# checkbox入れる
-              -# %label(for="reveal_password")パスワードを表示する
               
           .form-group
             %label(for="password_confirmation")パスワード再入力
@@ -127,32 +123,30 @@
           .form-group
             %p.submit-caution
               「登録・送信」のボタンを押すことにより、
-              %a{:href => "/jp/tos_list/", :target => "_blank"} 利用規約
+              %a{:href => "#", :target => "_blank"} 利用規約
               に同意したものとみなします
           = f.submit '登録・送信', class: 'submit'
 
           .form-group
           %p.privacy-info
-            %a{:href => "/jp/help_center/article/423/", :target => "_blank"}
-              本人情報の登録について
-              -# %i.icon-arrow-right
+            = link_to("本人情報の登録について", "#")
 
           .form-group
           %p.privacy-policy
             This site is protected by reCAPTCHA and the Google
-            %a{:href => "https://policies.google.com/privacy", :target => "_blank"} Privacy Policy
+            = link_to("Privacy Policy", "#")
             and
-            %a{:href => "https://policies.google.com/terms", :target => "_blank"} Terms of Service
+            = link_to("Terms of Service", "#")
             apply.
 
   .account-page__footer
-    %ul.caution
+    .caution
       %li
-        %a{:href => "https://www.mercari.com/jp/privacy/"} プライバシーポリシー
+        = link_to("プライバシーポリシー", "#")
       %li
-        %a{:href => "https://www.mercari.com/jp/tos/"} フリマアプリ利用規約
+        = link_to("フリマアプリ利用規約", "#")
       %li
-        %a{:href => "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+        = link_to("特定商取引に関する表記", "#")
 
     = link_to root_path, class: "footer-logo" do
       = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"

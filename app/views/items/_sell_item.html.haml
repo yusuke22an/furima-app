@@ -145,10 +145,10 @@
               .btn__send
                 = f.submit '登録・送信', class: 'submit'
                 .btn__redirect
-                  = link_to("もどる", root_path)
+                  = link_to "もどる", :back
 
   .sell-page__footer
-    %ul.caution
+    .caution
       %li
         = link_to("プライバシーポリシー", "#")
       %li
