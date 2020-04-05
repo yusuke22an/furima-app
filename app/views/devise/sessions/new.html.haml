@@ -30,17 +30,16 @@
 
           .form-group
           %p.password-info
-            %a{:href => "#", :target => "_blank"}
-              パスワードをお忘れの方
-
+            = link_to("パスワードをお忘れの方", "#")
+              
   .sign_in-page__footer
     %ul.caution
       %li
-        %a{:href => "#"} プライバシーポリシー
+        = link_to("プライバシーポリシー", "#")
       %li
-        %a{:href => "#"} フリマアプリ利用規約
+        = link_to("フリマアプリ利用規約", "#")
       %li
-        %a{:href => "#"} 特定商取引に関する表記
+        = link_to("特定商取引に関する表記", "#")
 
     = link_to root_path, class: "footer-logo" do
       = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"

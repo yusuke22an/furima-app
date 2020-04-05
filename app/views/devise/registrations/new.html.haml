@@ -129,25 +129,24 @@
 
           .form-group
           %p.privacy-info
-            %a{:href => "#", :target => "_blank"}
-              本人情報の登録について
+            = link_to("本人情報の登録について", "#")
 
           .form-group
           %p.privacy-policy
             This site is protected by reCAPTCHA and the Google
-            %a{:href => "#", :target => "_blank"} Privacy Policy
+            = link_to("Privacy Policy", "#")
             and
-            %a{:href => "#", :target => "_blank"} Terms of Service
+            = link_to("Terms of Service", "#")
             apply.
 
   .account-page__footer
-    %ul.caution
+    .caution
       %li
-        %a{:href => "#"} プライバシーポリシー
+        = link_to("プライバシーポリシー", "#")
       %li
-        %a{:href => "#"} フリマアプリ利用規約
+        = link_to("フリマアプリ利用規約", "#")
       %li
-        %a{:href => "#"} 特定商取引に関する表記
+        = link_to("特定商取引に関する表記", "#")
 
     = link_to root_path, class: "footer-logo" do
       = image_tag "/logo.png" ,alt: "logo", class: "banner", width: "120px", height: "33px"
