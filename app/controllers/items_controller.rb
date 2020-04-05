@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only:[:index, :show, :like, :search]
   before_action :set_category_parent_array, only: [:new, :create, :edit, :update]
   before_action :delete_photos,only: [:update] 
   before_action :authenticate_user!, only: [:new,:create,:edit,:update]
+
   # 商品一覧表示(トップページ)用のアクション
   def index
-    @categories = Category.all
     @items = Item.where(buyer_id: nil).order("created_at DESC").limit(6)
   end
 
@@ -35,7 +36,6 @@ class ItemsController < ApplicationController
   
   # 商品詳細表示用のアクション
   def show
-    @categories = Category.all
     if @item.category.parent == nil
       # 一番上のカテゴリ
       @parent = @item.category.name
@@ -78,8 +78,12 @@ class ItemsController < ApplicationController
   end
 
   def like
-    @categories = Category.all
     @items = Item.joins(:likes).order(created_at: :desc).page(params[:page]).per(10)
+  end
+
+  # ヘッダー商品検索用のアクション
+  def search
+    @items = Item.where('name LIKE(?)', "%#{params[:search]}%").page(params[:page]).per(30)
   end
 
 private
@@ -91,6 +95,10 @@ private
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 
   def set_category_parent_array

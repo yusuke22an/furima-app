@@ -3,10 +3,10 @@
     .header__inner__top
       = link_to root_path, class: "header__inner__top__logo" do
         = image_tag '/logo.png'
-      .header__inner__top__form
-        キーワードから探す
-      .header__inner__top__submit
-        = image_tag '/icon-search 1.png'
+      .header__inner__top__search
+        = form_with url: search_items_path, method: :get, local: true do |f|
+          = f.text_field :search, class: "header__inner__top__search__form", placeholder: "キーワードから探す"
+          = f.submit '', class: "header__inner__top__search__submit"
     .header__inner__bottom
       .header__inner__bottom__left
         .header__inner__bottom__left__category
