@@ -103,7 +103,7 @@
                 font-size: 16px;
               }
               select{
-                width: calc(34% - 17px);
+                width: 90px;
                 position: relative;
                 z-index: 2;
                 height: 48px;
@@ -120,8 +120,8 @@
                 line-height: 1.5;
                 color: gray;
               }
-              p.submit-caution{
-                text-align: center;
+              .submit-caution{
+                line-height: 1.5;
                 a{
                   text-decoration: none;
                   color: #0099e8;

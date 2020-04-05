@@ -171,51 +171,6 @@
                   }
                 }
               }
-              // フロントに実装追加する際に復旧させる
-              // &__fee{
-              //   display: flex;
-              //   align-items: center;
-              //   padding: 10px 0;
-              //   font-weight: normal;
-              //   &--left{
-              //     width: 50%;
-              //     line-height: 48px;
-              //     float: left;
-
-              //   }
-              //   &--right{
-              //     width: 80%;
-              //     text-align: right;
-              //     float: right;
-              //     padding-right: 10px;
-              //   }
-              // }
-
-              // &__profit{
-              //   display: flex;
-              //   align-items: center;
-              //   padding: 10px 0;
-              //   font-weight: 600;
-              //   font-size: 16px;
-              //   &--left{
-              //     width: 50%;
-              //     line-height: 48px;
-              //     float: left;
-              //   }
-              //   &--right{
-              //     width: 50%;
-              //     text-align: right;
-              //     font-size: 34px;
-              //     float: right;
-              //     padding-right: 10px;
-              //   }
-              // }
-              // &__border{
-              //   width: 100%;
-              //   border-bottom: 1px solid #ccc;
-              // }
-
-
               label{
                 font-weight: 600;
               }
