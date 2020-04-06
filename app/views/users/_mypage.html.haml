@@ -17,7 +17,7 @@
             .mypage__container__right__transaction__present__items
               - @shuppin_chu_items.each do |item|
                 .mypage__container__right__transaction__present__items__item
-                  = link_to item_path(item.id) do
+                  = link_to item_path(item) do
                     = image_tag item.photos[0].variant(auto_orient: true), class: 'mypage__container__right__transaction__present__items__item__picture'
                   .mypage__container__right__transaction__present__items__item__list
                     .mypage__container__right__transaction__present__items__item__list__name
