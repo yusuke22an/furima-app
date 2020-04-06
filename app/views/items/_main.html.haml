@@ -93,12 +93,13 @@
       .main__pickup__box
         .main__pickup__box__items
           - @items.each do |item|
-            .main__pickup__box__items__item
-              .main__pickup__box__items__item__picture
-                = link_to item_path(item) do
-                  = image_tag item.photos[0].variant(auto_orient: true), class: 'main__pickup__box__items__item__picture__img'
-              .main__pickup__box__items__item__list
-                .main__pickup__box__items__item__list__name
-                  = item.name
-                .main__pickup__box__items__item__list__price
-                  = "#{item.price}円"
+            - if item.photos[0]
+              .main__pickup__box__items__item
+                .main__pickup__box__items__item__picture
+                  = link_to item_path(item) do
+                    = image_tag item.photos[0].variant(auto_orient: true), class: 'main__pickup__box__items__item__picture__img'
+                .main__pickup__box__items__item__list
+                  .main__pickup__box__items__item__list__name
+                    = item.name
+                  .main__pickup__box__items__item__list__price
+                    = "#{item.price}円"

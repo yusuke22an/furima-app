@@ -11,7 +11,8 @@
           = @item.name
 
           .itemBox__body
-            = image_tag @item.photos[0].variant(auto_orient: true), class: 'itemBox__body__show__img'
+            - if @item.photos[0]
+              = image_tag @item.photos[0].variant(auto_orient: true), class: 'itemBox__body__show__img'
           .itemBox__price
             %span
               = ("#{@item.price} 円")
