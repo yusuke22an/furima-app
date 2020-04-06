@@ -1,0 +1,34 @@
+= render "layouts/header"
+.search
+  .search__container
+    .search__container__title
+      .search__container__title__front
+        = params[:search]
+      .search__container__title__back
+        検索結果
+    .search__container__results
+      = page_entries_info(@items)
+    .search__container__items
+      - @items.each do |item|
+        .search__container__items__item
+          - if item.buyer_id
+            .search__container__items__item__picture
+              = image_tag item.photos[0].variant(auto_orient: true), class: 'search__container__items__item__picture__img'
+              .search__container__items__item__picture__sold
+                SOLD
+            .search__container__items__item__list
+              .search__container__items__item__list__name
+                = item.name
+              .search__container__items__item__list__price
+                = "#{item.price}円"
+          - else
+            .search__container__items__item__picture
+              = link_to item_path(item) do
+                = image_tag item.photos[0].variant(auto_orient: true), class: 'search__container__items__item__picture__img'
+            .search__container__items__item__list
+              .search__container__items__item__list__name
+                = item.name
+              .search__container__items__item__list__price
+                = "#{item.price}円"
+    = paginate(@items)
+= render "layouts/footer"
