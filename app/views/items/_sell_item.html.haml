@@ -45,6 +45,8 @@
               %span.form-require 必須
               .form-name
                 = f.text_field :name, class: 'input-default', placeholder: "商品名（最大40文字まで）"
+                - if @item.errors[:name].any?
+                  =@item.errors.full_messages[2]
             .form-group
               %label(for="text")商品の説明
               %span.form-require 必須
