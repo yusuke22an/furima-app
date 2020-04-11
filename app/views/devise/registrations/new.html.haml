@@ -65,11 +65,11 @@
             .birthday-select-wrap
               .select-wrap
                 %i.icon-arrow-bottom
-                = f.select :year_of_birth, [["2020", "2020"], ["2019", "2019"]]
+                = f.select :year_of_birth,["--"], {},{class: 'input-default-quater', id:"select_year_of_birth"}
                 年
-                = f.select :month_of_birth, [["1", "1"], ["2", "2"]]
+                = f.select :month_of_birth, ["--"], {},{class: 'input-default-quater', id:"select_month_of_birth"}
                 月
-                = f.select :day_of_birth, [["1", "1"], ["2", "2"]]
+                = f.select :day_of_birth, ["--"], {},{class: 'input-default-quater', id:"select_day_of_birth"}
                 日
           
           .form-group
